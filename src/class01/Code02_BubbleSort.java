@@ -3,30 +3,30 @@ package src.class01;
 import java.util.Arrays;
 
 /**
- * 选择排序及其对数器验证
+ * 冒泡排序及其对数器验证
  * 
  * @author peiyiding
  *
  */
-public class Code01_SelectionSort {
+public class Code02_BubbleSort {
 	
 	/**
-	 * 选择排序
+	 * 冒泡排序
 	 * 
 	 * @param arr 数组
 	 */
-	public static void selectionSort(int[] arr) {
-		if (null == arr || 
+	public static void bubbleSort(int[] arr) {
+		if (null == arr ||
 			arr.length < 2) {
 			return;
 		}
 		
-		for (int i = 0; i < arr.length; i++) {
-			int minNumIndex = i;
-			for (int j = i + 1; j < arr.length; j++) {
-				minNumIndex = arr[j] < arr[minNumIndex] ? j : minNumIndex;
+		for (int i = arr.length - 1; i >= 0; i--) {
+			for (int j = 0; j < i; j++) {
+				if (arr[j] > arr[j + 1]) {
+					swap(arr, j, j + 1);
+				}
 			}
-			swap(arr, minNumIndex, i);
 		}
 	}
 	
@@ -59,7 +59,7 @@ public class Code01_SelectionSort {
 			int[] arr1 = generateRandomArray(maxSize, maxValue);
 			int[] arr2 = copyArray(arr1);
 			
-			selectionSort(arr1);
+			bubbleSort(arr1);
 			Arrays.sort(arr2);
 			
 			randomPrint(printFlag, arr1, arr2);

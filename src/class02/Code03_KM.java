@@ -41,10 +41,6 @@ public class Code03_KM {
 		return ans;
 	}
 	
-	public static void main(String[] args) {
-		test();
-	}
-	
 	/**
 	 * 对数器
 	 */
@@ -175,5 +171,14 @@ public class Code03_KM {
 		}
 		
 		return ans;
+	}
+	
+	/**
+	 * main
+	 * 
+	 * @param args 标准入参
+	 */
+	public static void main(String[] args) {
+		test();
 	}
 }

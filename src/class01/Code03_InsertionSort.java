@@ -3,30 +3,30 @@ package src.class01;
 import java.util.Arrays;
 
 /**
- * 选择排序及其对数器验证
+ * 插入排序及其对数器验证
  * 
  * @author peiyiding
  *
  */
-public class Code01_SelectionSort {
+public class Code03_InsertionSort {
 	
 	/**
-	 * 选择排序
+	 * 插入排序
 	 * 
 	 * @param arr 数组
 	 */
-	public static void selectionSort(int[] arr) {
-		if (null == arr || 
+	public static void insertionSort(int[] arr) {
+		if (null == arr ||
 			arr.length < 2) {
 			return;
 		}
 		
-		for (int i = 0; i < arr.length; i++) {
-			int minNumIndex = i;
-			for (int j = i + 1; j < arr.length; j++) {
-				minNumIndex = arr[j] < arr[minNumIndex] ? j : minNumIndex;
+		for (int i = 1; i < arr.length; i++) {
+			for (int j = i - 1; j >= 0; j--) {
+				if (arr[j] > arr[j + 1]) {
+					swap(arr, j, j + 1);
+				}
 			}
-			swap(arr, minNumIndex, i);
 		}
 	}
 	
@@ -50,8 +50,8 @@ public class Code01_SelectionSort {
 	public static void test() {
 		int maxSize = 100;
 		int maxValue = 100;
-		int testTimes = 1000;
-		boolean printFlag = false;
+		int testTimes = 10;
+		boolean printFlag = true;
 		
 		System.out.println("start");
 		
@@ -59,7 +59,7 @@ public class Code01_SelectionSort {
 			int[] arr1 = generateRandomArray(maxSize, maxValue);
 			int[] arr2 = copyArray(arr1);
 			
-			selectionSort(arr1);
+			insertionSort(arr1);
 			Arrays.sort(arr2);
 			
 			randomPrint(printFlag, arr1, arr2);
@@ -108,7 +108,7 @@ public class Code01_SelectionSort {
 	/**
 	 * 随机打印
 	 * 
-	 * @param printFalg 打印标识
+ 	 * @param printFalg 打印标识
 	 * @param arr1 数组1
 	 * @param arr2 数组2
 	 */
