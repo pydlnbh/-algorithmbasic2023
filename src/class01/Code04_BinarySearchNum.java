@@ -144,7 +144,5 @@ public class Code04_BinarySearchNum {
 	 */
 	public static void main(String[] args) {
 		test();
-//		int[] arr = {-66, -63, -60, -58, -58, -51, -46, -44, -36, -29, -22, -21, -19, -13, -12, -10, -7, -3, -1, 0, 0, 3, 6, 10, 13, 14, 15, 16, 19, 22, 28, 36, 41, 53, 54, 65, 69, 72, 89};
-//		System.out.println(testFind(arr, -29));
 	}
 }
