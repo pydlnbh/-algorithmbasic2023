@@ -28,7 +28,7 @@ public class Code05_NearLeft {
 		int right = arr.length - 1;
 		int mid;
 		 
-		while (left < right) {
+		while (left <= right) {
 			mid = left + ((right - left) >> 1);
 			
 			if (num <= arr[mid]) {
@@ -48,8 +48,8 @@ public class Code05_NearLeft {
 	public static void test() {
 		int maxSize = 100;
 		int maxValue = 100;
-		int testTimes = 10;
-		boolean printFlag = true;
+		int testTimes = 1000;
+		boolean printFlag = false;
 		
 		System.out.println("start");
 		
@@ -59,11 +59,11 @@ public class Code05_NearLeft {
 			int	randomNum = (Math.random() < 0.5 && 0 < arr.length) ? 
 							arr[(int) (Math.random() * arr.length)] :
 						    (int) (Math.random() * maxValue) - (int) (Math.random() * maxValue);
-
-			randomPrint(printFlag, arr, randomNum);
 			
 			int ans1 = testNearLeft(arr, randomNum);
 			int ans2 = nearLeftIndex(arr, randomNum);
+			
+			randomPrint(printFlag, arr, randomNum);
 			
 			if (ans1 != ans2) {
 				System.out.println("Oops");
@@ -109,6 +109,7 @@ public class Code05_NearLeft {
 	public static void randomPrint(boolean printFlag, int[] arr, int num) {
 		if (printFlag && Math.random() < 0.5) {
 			System.out.println("num = " + num);
+			System.out.print("arr = ");
 			for (int i = 0; i < arr.length; i++) {
 				String comma = i == arr.length - 1 ? "\n" : ", ";
 				System.out.print(arr[i] + comma);
@@ -142,12 +143,6 @@ public class Code05_NearLeft {
 	 * @parm args 标准入参
 	 */
 	public static void main(String[] args) {
-//		test();
-		
-		int[] arr = {-77, -54, -38, -32, -30, -26, -25, -21, -15, -13, -12, -12, -10, -7, 1, 12, 14, 19, 19, 25, 27, 37, 47, 50, 55, 70, 72, 74};
-		int index = testNearLeft(arr, -34);
-		int index1 = nearLeftIndex(arr, -34);
-		System.out.println(index + ", " + arr[index]);
-		System.out.println(index1 + ", " + arr[index1]);
+		test();
 	}
 }
