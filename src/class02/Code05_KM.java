@@ -11,7 +11,7 @@ import java.util.Set;
  * @author peiyiding
  *
  */
-public class Code03_KM {
+public class Code05_KM {
 	
 	/**
 	 * 解题方法
