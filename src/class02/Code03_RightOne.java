@@ -12,7 +12,7 @@ public class Code03_RightOne {
 	 * 怎么把一个int类型的数，提取出二进制中最右侧的1来
 	 * 
 	 * @param num int类型的数
-	 * @int 
+	 * @return int 最右侧的1 
 	 */
 	public static int rightOneBit(int num) {
 		int ans = 0;
@@ -28,6 +28,16 @@ public class Code03_RightOne {
 	}
 	
 	/**
+	 * 把一个int类型的数，提取出二进制中最右侧的1来(简洁写法)
+	 * 
+	 * @param num int类型的数
+	 * @return int 最右侧的1
+	 */
+	public static int rightOneBitSimple(int num) {
+		return num & (~num + 1);
+	}
+	
+	/**
 	 * 对数器
 	 */
 	public static void test() {
@@ -40,7 +50,8 @@ public class Code03_RightOne {
 		for (int i = 0; i < testTimes; i++) {
 			int num = ((int) (Math.random() * range) + 1) - ((int) (Math.random() * range) + 1);
 					
-			int ans1 = rightOneBit(num);
+		    // int ans1 = rightOneBit(num);
+			int ans1 = rightOneBitSimple(num);
 			int ans2 = testRightOneBit(num);
 			
 			if (Math.random() < 0.5 && printFlag) {

@@ -51,8 +51,8 @@ public class Code02_OneOddTimes {
 				System.out.println("Oops");
 
 				for (int j = 0; j < arr.length; j++) {
-					String comma = j == arr.length - 1 ? ", " : "\n";
-					System.out.print(j + comma);
+					String comma = j == arr.length - 1 ? "\n" : ", ";
+					System.out.print(arr[j] + comma);
 				}
 				
 				System.out.println("ans1 = " + ans1 + ", ans2 = " + ans2);
@@ -99,12 +99,12 @@ public class Code02_OneOddTimes {
 			}
 		}
 		
-//		for (int j = 0; j < arr.length; j++) {
-//			int k = (int) (Math.random() * arr.length);
-//			int temp = arr[j];
-//			arr[j] = arr[k];
-//			arr[k] = arr[j];
-//		}
+		for (int j = 0; j < arr.length; j++) {
+			int k = (int) (Math.random() * arr.length);
+			int temp = arr[j];
+			arr[j] = arr[k];
+			arr[k] = temp;
+		}
 		
 		return arr;
 	}

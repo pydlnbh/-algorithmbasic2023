@@ -14,7 +14,7 @@ import java.util.Set;
 public class Code05_KM {
 	
 	/**
-	 * 解题方法
+	 * 一个数组中有一种数出现K次，其他数都出现了M次， 已知M > 1，K < M，找到出现了K次的数 要求额外空间复杂度O(1)，时间复杂度O(N)
 	 * 
 	 * @param arr 数组
 	 * @param k 出现k次
@@ -24,11 +24,11 @@ public class Code05_KM {
 	public static int onlyKTimes(int[] arr, int k, int m) {
 		int[] t = new int[32];
 		
-		for (int num : arr) {
-			for (int i = 0; i < 32; i++) {
+		for (int i = 0; i < 32; i++) {
+			for (int num : arr) {
 				t[i] += (num >> i) & 1;
 			}
-		}
+		}	
 		
 		int ans = 0;
 		
@@ -46,9 +46,9 @@ public class Code05_KM {
 	 */
 	public static void test() {
 		int max = 10;
-		int range = 200;
-		int numKindsMax = 20;
-		int testTimes = 10;
+		int range = 100;
+		int numKindsMax = 10;
+		int testTimes = 100;
 		
 		System.out.println("start");
 		
@@ -65,15 +65,10 @@ public class Code05_KM {
 			
 			int[] arr = generateRandomArray(numKindsMax, range, k, m);
 			
-			int ans1 = testOnlyKTimes(arr, k, m);
-			int ans2 = onlyKTimes(arr, k, m);
+			int ans1 = onlyKTimes(arr, k, m);
+			int ans2 = testOnlyKTimes(arr, k, m);
 			
 			if (ans1 != ans2) {
-				for (int num : arr) {
-					System.out.print(num + ", ");
-				}
-				System.out.println();
-				System.out.println("ans1 = " + ans1 + ", ans2 = " + ans2);
 				System.out.println("Oops");
 			}
 		}
@@ -104,29 +99,21 @@ public class Code05_KM {
 		
 		numKinds--;
 		
-		Set<Integer> set = new HashSet<>();
+		Set<Integer> set = new HashSet<Integer>();
 		set.add(kNum);
 		
 		while (numKinds > 0) {
-			int curNum;
+			int randomNum = 0;
 			do {
-				curNum = generateRandomNum(range);
-			} while (set.contains(curNum));
-			
-			set.add(curNum);
+				randomNum = generateRandomNum(range);
+			} while (set.contains(randomNum));
 			
 			numKinds--;
+			set.add(randomNum);
 			
 			for (int i = 0; i < m; i++) {
-				arr[index++] = curNum;
+				arr[index++] = randomNum;
 			}
-		}
-		
-		for (int j = 0; j < arr.length; j++) {
-			int l = (int) (Math.random() * arr.length);
-			int temp = arr[j];
-			arr[j] = arr[l];
-			arr[l] = temp;
 		}
 		
 		return arr;
@@ -151,6 +138,7 @@ public class Code05_KM {
 	 * @return int 出现k次的数
 	 */
 	public static int testOnlyKTimes(int[] arr, int k, int m) {
+		int ans = 0;
 		Map<Integer, Integer> testMap = new HashMap<>();
 		
 		for (int num : arr) {
@@ -161,10 +149,8 @@ public class Code05_KM {
 			}
 		}
 		
-		int ans = 0;
-		
 		for (int num : arr) {
-			if (k == testMap.get(num)) {
+			if ((testMap.get(num) % m) != 0) {
 				ans = num;
 				break;
 			}
