@@ -207,7 +207,7 @@ public class Code01_ReverseList {
 	public static List<Integer> getDoubleListOriginOrder(DoubleNode head) {
 		List<Integer> ans = new ArrayList<>();
 		
-		while (null != null) {
+		while (null != head) {
 			ans.add(head.val);
 			head = head.next;
 		}
@@ -234,10 +234,10 @@ public class Code01_ReverseList {
 		}
 		
 		for (int i = 0; i < list.size(); i++) {
-			if (!list.get(i).equals(head.val)) {
+			if (!list.get(i).equals(end.val)) {
 				return false;
 			}
-			end = head.pre;
+			end = end.pre;
 		}
 		
 		return true;
@@ -280,7 +280,7 @@ public class Code01_ReverseList {
 	 * 对数器
 	 */
 	public static void test() {
-		int len = 50;
+		int len = 5;
 		int val = 100;
 		int testTimes = 100;
 		
