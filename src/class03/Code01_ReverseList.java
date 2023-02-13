@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 反转链表
+ * 反转单链表、反转双链表
  * 
  * @author peiyiding
  *
