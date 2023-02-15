@@ -43,4 +43,83 @@ public class Code08_GetMax {
 	}
 	
 	
+	public static int getMax01(int[] arr) {
+		return process01(arr, 0, arr.length - 1);
+	}
+	
+	public static int process01(int[] arr, int left, int right) {
+		if (left == right) {
+			return arr[left];
+		}
+		
+		int mid = left + ((right - left) >> 1);
+		int leftMax = process01(arr, left, mid);
+		int rightMax = process01(arr, mid + 1, right);
+		return Math.max(leftMax, rightMax);
+	}
+	
+	/**
+	 * 生成随机数组
+	 * 
+	 * @param maxValue 最大值
+	 * @param maxLength 最大长度
+	 * @reutrn int[] 随机数组
+	 */
+	public static int[] generateRandomArray(int maxValue, int maxLength) {
+		int[] ans = new int[(int) (Math.random() * maxLength) + 1];
+		
+		for (int i = 0; i < ans.length; i++) {
+			ans[i] = (int) (Math.random() * maxValue) - (int) (Math.random() * maxValue);
+		}
+		
+		return ans;
+	}
+	
+	/**
+	 * 对数器测试方法
+	 * 
+	 * @param arr 数组
+	 */
+	public static int testGetMax(int[] arr) {
+		int ans = arr[0];
+		for (int num : arr) {
+			ans = Math.max(ans, num);
+		}
+		
+		return ans;
+	}
+	
+	/**
+	 * 对数器
+	 */
+	public static void test() {
+		int maxValue = 100;
+		int maxLength = 100;
+		int testTimes = 10000;
+		
+		System.out.println("start");
+		
+		for (int i = 0; i < testTimes; i++) {
+			int[] arr = generateRandomArray(maxValue, maxLength);
+			
+			int ans1 = getMax01(arr);
+			int ans2 = testGetMax(arr);
+			
+			if (ans1 != ans2) {
+				System.out.println("Oops");			
+				break;
+			}
+		}
+		
+		System.out.println("end");
+	}
+	
+	/**
+	 * main 
+	 * 
+	 * @param args 标准入参
+	 */
+	public static void main(String[] args) {
+		test();
+	}
 }

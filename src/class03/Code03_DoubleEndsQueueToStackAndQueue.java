@@ -101,6 +101,9 @@ public class Code03_DoubleEndsQueueToStackAndQueue {
 		}
 	}
 	
+	/**
+	 * 双向链表实现栈 (先进后出) 
+	 */
 	public static class MyStack<T> {
 		private DoubleEndsQueue<T> queue;
 		
@@ -121,6 +124,9 @@ public class Code03_DoubleEndsQueueToStackAndQueue {
 		}
 	}
 	
+	/**
+	 * 双向链表实现队列 (先进先出) 
+	 */
 	public static class MyQueue<T> {
 		private DoubleEndsQueue<T> queue;
 		
@@ -141,10 +147,20 @@ public class Code03_DoubleEndsQueueToStackAndQueue {
 		}
 	}
 	
+	/**
+	 * 判断包装类是否相等
+	 * 
+	 * @param num1 对象1
+	 * @param num2 对象2
+	 * @return boolean 是否相等
+	 */
 	public static boolean isEqual(Integer num1, Integer num2) {
 		return (num1 == num2) || (num1 != null && num1.equals(num2));
 	}
 	
+	/**
+	 * 对数器
+	 */
 	public static void test() {
 		int oneTestDataNum = 100;
 		int maxValue = 100;
@@ -200,6 +216,11 @@ public class Code03_DoubleEndsQueueToStackAndQueue {
 		System.out.println("end");
 	}
 	
+	/**
+	 * main
+	 * 
+	 * @param args 标准入参
+	 */
 	public static void main(String[] args) {
 		test();
 	}

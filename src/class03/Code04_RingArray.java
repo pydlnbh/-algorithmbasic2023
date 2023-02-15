@@ -11,6 +11,9 @@ import java.util.Queue;
  */
 public class Code04_RingArray {
 	
+	/**
+	 * 用环形数组实现栈和队列
+	 */
 	public static class MyQueue {
 		private Integer[] arr;
 		private int pushI;
@@ -55,10 +58,20 @@ public class Code04_RingArray {
 		}
 	}
 	
+	/**
+	 * 判断包装类是否相等
+	 * 
+	 * @param a 对象1
+	 * @param b 对象2
+	 * @return boolean 是否相等
+	 */
 	public static boolean isEqual(Integer a, Integer b) {
 		return (a == b) || (a != null && a.equals(b));
 	}
 		
+	/**
+	 * 对数器
+	 */
 	public static void test() {
 		int oneTestDataNum = 10;
 		int maxValue = 100;
@@ -96,6 +109,11 @@ public class Code04_RingArray {
 		System.out.println("end");
 	}
 	
+	/**
+	 * main
+	 * 
+	 * @param args 标准入参
+	 */
 	public static void main(String[] args) {
 		test();
 	}
