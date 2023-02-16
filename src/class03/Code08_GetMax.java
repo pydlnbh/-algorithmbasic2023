@@ -37,24 +37,8 @@ public class Code08_GetMax {
 		}
 		
 		int mid = left + ((right - left) >> 1);
-		int leftMax = process(arr, 0, mid);
+		int leftMax = process(arr, left, mid);
 		int rightMax = process(arr, mid + 1, right);
-		return Math.max(leftMax, rightMax);
-	}
-	
-	
-	public static int getMax01(int[] arr) {
-		return process01(arr, 0, arr.length - 1);
-	}
-	
-	public static int process01(int[] arr, int left, int right) {
-		if (left == right) {
-			return arr[left];
-		}
-		
-		int mid = left + ((right - left) >> 1);
-		int leftMax = process01(arr, left, mid);
-		int rightMax = process01(arr, mid + 1, right);
 		return Math.max(leftMax, rightMax);
 	}
 	
@@ -102,7 +86,7 @@ public class Code08_GetMax {
 		for (int i = 0; i < testTimes; i++) {
 			int[] arr = generateRandomArray(maxValue, maxLength);
 			
-			int ans1 = getMax01(arr);
+			int ans1 = getMax(arr);
 			int ans2 = testGetMax(arr);
 			
 			if (ans1 != ans2) {
