@@ -73,6 +73,41 @@ public class Code01_MergeSort {
 	}
 	
 	/**
+	 * 归并排序的非递归版
+	 * 
+	 * @param arr 数组
+	 */
+	public static void mergeSort02(int[] arr) {
+		if (arr == null || arr.length < 2) {
+			return;
+		}
+		
+		int size = 1;
+		
+		while (size < arr.length) {
+			int left = 0;
+			while (left < arr.length) {
+				if (size >= arr.length - left) {
+					break;
+				}
+				
+				int mid = size + left - 1;
+				int right = mid + Math.min(size, arr.length - 1 - mid);
+				
+				merge(arr, left, mid, right);
+				
+				left = right + 1;
+			}
+			
+			if (size > (arr.length >> 1)) {
+				break;
+			}
+			
+			size <<= 1;
+		}
+	}
+	
+	/**
 	 * 生成随机数组
 	 * 
 	 * @param maxValue 最大值
@@ -140,7 +175,7 @@ public class Code01_MergeSort {
 	 */
 	public static void test() {
 		int maxValue = 100;
-		int maxLength = 5;
+		int maxLength = 1000;
 		int testTimes = 10000;
 		
 		System.out.println("start");
@@ -149,7 +184,8 @@ public class Code01_MergeSort {
 			int[] arr0 = generateRandomArray(maxValue, maxLength);
 			int[] arr1 = copyArray(arr0);
 			
-			mergeSort01(arr0);
+//			mergeSort01(arr0);
+			mergeSort02(arr0);
 			Arrays.sort(arr1);
 			
 			if (!isEqual(arr0, arr1)) {
