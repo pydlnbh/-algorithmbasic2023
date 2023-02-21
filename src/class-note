@@ -155,7 +155,7 @@ arr[i-1] > arr[i] < arr[i+1]，i位置是局部最小；
 7的后面有：0，2
 0的后面没有
 2的后面没有
-所以总共有5个  标记
+所以总共有5个
 
 
 
@@ -163,7 +163,7 @@ arr[i-1] > arr[i] < arr[i+1]，i位置是局部最小；
 
 内容：
 
-再来一个归并排序面试题
+再来一个归并排序面试题 
 
 荷兰国旗问题
 
@@ -177,7 +177,7 @@ arr[i-1] > arr[i] < arr[i+1]，i位置是局部最小；
 
 给定一个数组arr，两个整数lower和upper，
 返回arr中有多少个子数组的累加和在[lower,upper]范围上
-Leetcode题目：https://leetcode.com/problems/count-of-range-sum/
+Leetcode题目：https://leetcode.com/problems/count-of-range-sum/  标记
 
 荷兰国旗问题的实现
 
