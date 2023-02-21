@@ -20,15 +20,25 @@ public class Solution {
 	 * 随机练习题目
 	 */
 	public static void randomPractice() {
-		Scanner sc = new Scanner(System.in);
-		System.out.print("一共学习了几节课: ");
-		int iCalss = sc.nextInt();
-		
-		System.out.println("你今天要练习的课是: " + ((int) (Math.random() * iCalss) + 1));
-		
-		System.out.print("一节课有几道题: ");
-		int iCode = sc.nextInt();
-		System.out.println("你今天要做的题目是: " + ((int) (Math.random() * iCode) + 1));
+		try (Scanner sc = new Scanner(System.in)) {
+			System.out.print("一共学习了几节课: ");
+			int iCalss = sc.nextInt();
+			
+			System.out.println("你今天要练习的课是: " + ((int) (Math.random() * iCalss) + 1));
+			
+			System.out.print("一节课有几道题: ");
+			int iCode = sc.nextInt();
+			System.out.println("你今天要做的题目是: " + ((int) (Math.random() * iCode) + 1));
+		}
+	}
+	
+	/**
+	 * 生成随机数组
+	 * 
+	 * @param max 最大值
+	 */
+	public static int generateRandomNum(int max) {
+		return (int) (Math.random() * max) - (int) (Math.random() * max);
 	}
 	
 	/**
@@ -41,7 +51,7 @@ public class Solution {
 		System.out.println("start");
 		
 		for (int i = 0; i < testTimes; i++) {
-			
+			generateRandomNum(max);
 		}
 		
 		System.out.println("end");
