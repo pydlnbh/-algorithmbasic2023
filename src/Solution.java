@@ -12,7 +12,6 @@ public class Solution {
 	 * @param args 标准入参
 	 */
 	public static void main(String[] args) {
-//		test();
 		randomPractice();
 	}
 	
@@ -30,30 +29,5 @@ public class Solution {
 			int iCode = sc.nextInt();
 			System.out.println("你今天要做的题目是: " + ((int) (Math.random() * iCode) + 1));
 		}
-	}
-	
-	/**
-	 * 生成随机数组
-	 * 
-	 * @param max 最大值
-	 */
-	public static int generateRandomNum(int max) {
-		return (int) (Math.random() * max) - (int) (Math.random() * max);
-	}
-	
-	/**
-	 * 对数器
-	 */
-	public static void test() {
-		int max = 100;
-		int testTimes = 100000;
-		
-		System.out.println("start");
-		
-		for (int i = 0; i < testTimes; i++) {
-			generateRandomNum(max);
-		}
-		
-		System.out.println("end");
 	}
 }
