@@ -1,143 +1,22 @@
 package src.class05;
 
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
 
 /**
- * 快速排序从1.0到3.0的实现
+ * 快排的递归版和费递归版
  * 
  * @author peiyiding
  *
  */
-public class Code02_QuickSort {
+public class Code03_QuickSortRecursiveAndUnrecursive {
 	
 	/**
-	 * 快排1.0, 时间复杂度O(n^2)
+	 * 快排递归版
 	 * 
 	 * @param arr 数组
-	 */
-	public static void quickSort01(int[] arr) {
-		if (arr == null || arr.length < 2) {
-			return;
-		}
-		
-		process01(arr, 0, arr.length - 1);
-	}
-
-	/**
-	 * 递归方法1.0
-	 * 
-	 * @param arr 数组
-	 * @param left 下标
-	 * @param right 下标
-	 */
-	public static void process01(int[] arr, int left, int right) {
-		if (left >= right) {
-			return;
-		}
-		
-		// 快排核心代码
-		int mid = partition(arr, left, right);
-		process01(arr, left, mid - 1);
-		process01(arr, mid + 1, right);
-	}
-	
-	/**
-	 * 快排核心代码
-	 * 
-	 * @param arr 数组
-	 * @param left 下标
-	 * @param right 下标
-	 * @return int 返回值
-	 */
-	public static int partition(int[] arr, int left, int right) {
-		if (left > right) {
-			return -1;
-		}
-		
-		if (left == right) {
-			return left;
-		}
-		
-		int lessEqual = left - 1;
-		int index = left;
-		
-		while (index < right) {
-			if (arr[index] <= arr[right]) {
-				swap(arr, index, ++lessEqual);
-			}
-			index++;
-		}
-		swap(arr, ++lessEqual, right);
-		return lessEqual;
-	}
-	
-	/**
-	 * 快速排序2.0
-	 * 
-	 * @param arr 数组
-	 */
-	public static void quickSort02(int[] arr) {
-		if (arr == null || arr.length < 2) {
-			return;
-		}
-		
-		process02(arr, 0, arr.length - 1);
-	}
-	
-	/**
-	 * 递归方法
-	 * 
-	 * @param arr 数组
-	 * @param left 下标
-	 * @param right 下标
-	 */
-	public static void process02(int[] arr, int left, int right) {
-		if (left >= right) {
-			return;
-		}
-		
-		int[] mid = nearNationFlag02(arr, left, right);
-		process02(arr, left, mid[0] - 1);
-		process02(arr, mid[1] + 1, right);
-	}
-	
-	/**
-	 * 荷兰国旗问题
-	 * 
-	 * @param arr 数组
-	 * @param left 下标
-	 * @param right 下标
-	 * @return int[] 返回值
-	 */
-	public static int[] nearNationFlag02(int[] arr, int left, int right) {
-		if (left > right) {
-			return new int[] {-1, -1};
- 		}
-		
-		if (left == right) {
-			return new int[] {left, right};
-		}
-		
-		int lessL = left - 1;
-		int more = right;
-		int index = left;
-		
-		while (index < more) {
-			if (arr[index] == arr[right]) {
-				index++;
-			} else if (arr[index] < arr[right]) {
-				swap(arr, index++, ++lessL);
-			} else {
-				swap(arr, index, --more);
-			}
-		}
-		swap(arr, right, more);
-		return new int[] {++lessL, more};
-	}
-	
-	/**
-	 * 真正的快排, 时间复杂度: O(N * Log(N))
-	 * @param arr
 	 */
 	public static void quickSort(int[] arr) {
 		if (arr == null || arr.length < 2) {
@@ -159,7 +38,7 @@ public class Code02_QuickSort {
 			return;
 		}
 		
-		swap(arr, left + (int) (Math.random() * (right - left + 1)), right);
+		swap(arr, left + ((int) (Math.random() * (right - left + 1))), right);
 		
 		int[] mid = netherLandsFlag(arr, left, right);
 		process(arr, left, mid[0] - 1);
@@ -172,7 +51,7 @@ public class Code02_QuickSort {
 	 * @param arr 数组
 	 * @param left 下标
 	 * @param right 下标
-	 * @return 返回值
+	 * @return int[] 返回值
 	 */
 	public static int[] netherLandsFlag(int[] arr, int left, int right) {
 		if (left > right) {
@@ -184,22 +63,159 @@ public class Code02_QuickSort {
 		}
 		
 		int lessL = left - 1;
-		int more = right;
+		int lessR = right;
 		int index = left;
 		
-		while (index < more) {
+		while (index < lessR) {
 			if (arr[index] == arr[right]) {
 				index++;
 			} else if (arr[index] < arr[right]) {
 				swap(arr, index++, ++lessL);
 			} else {
-				swap(arr, index, --more);
+				swap(arr, index, --lessR);
 			}
 		}
 		
-		swap(arr, right, more);
+		swap(arr, right, lessR);
 		
-		return new int[] {lessL + 1, more};
+		return new int[] {lessL + 1, lessR};
+	}
+	
+	public static class Op {
+		private int left;
+		private int right;
+		
+		public Op(int left, int right) {
+			this.left = left;
+			this.right = right;
+		}
+	}
+	
+	/**
+	 * 快排非递归版(使用栈)
+	 * 
+	 * @param arr 数组
+	 */
+	public static void quickSort01(int[] arr) {
+		if (arr == null || arr.length < 2) {
+			return;
+		}
+		
+		swap(arr, ((int) (Math.random() * (arr.length - 1))), arr.length - 1);
+		int[] mid = netherLandsFlag01(arr, 0, arr.length - 1);
+		Stack<Op> stack = new Stack<>();
+		stack.push(new Op(0, mid[0] - 1));
+		stack.push(new Op(mid[1] + 1, arr.length - 1));
+
+		while (!stack.isEmpty()) {
+			Op cur = stack.pop();
+			if (cur.left < cur.right) {
+				swap(arr, cur.left + ((int) (Math.random() * (cur.right - cur.left + 1))), cur.right);
+				mid = netherLandsFlag01(arr, cur.left, cur.right);
+				stack.push(new Op(cur.left, mid[0] - 1));
+				stack.push(new Op(mid[1] + 1, cur.right));
+			}
+		}
+	}
+	
+	/**
+	 * 荷兰国旗问题
+	 * 
+	 * @param arr 数组
+	 * @param left 下标
+	 * @param right 下标
+	 * @return int[] 返回值
+	 */
+	public static int[] netherLandsFlag01(int[] arr, int left, int right) {
+		if (left > right) {
+			return new int[] {-1, -1};
+		}
+		
+		if (left == right) {
+			return new int[] {left, right};
+		}
+		
+		int lessL = left - 1;
+		int lessR = right;
+		int index = left;
+		
+		while (index < lessR) {
+			if (arr[index] == arr[right]) {
+				index++;
+			} else if (arr[index] < arr[right]) {
+				swap(arr, index++, ++lessL);
+			} else {
+				swap(arr, index, --lessR);
+			}
+		}
+		
+		swap(arr, right, lessR);
+		
+		return new int[] {lessL + 1, lessR};
+	}
+	
+	/**
+	 * 快排非递归版 (使用队列)
+	 * 
+	 * @param arr 数组
+	 */
+	public static void quickSort02(int[] arr) {
+		if (arr == null || arr.length < 2) {
+			return;
+		}
+		
+		swap(arr, (int) (Math.random() * arr.length), arr.length - 1);
+		int[] mid = netherLandsFlag02(arr, 0, arr.length - 1);
+		Queue<Op> op = new LinkedList<>();
+		op.offer(new Op(0, mid[0] - 1));
+		op.offer(new Op(mid[1] + 1, arr.length - 1));
+		
+		while (!op.isEmpty()) {
+			Op cur = op.poll();
+			
+			if (cur.left < cur.right) {
+				swap(arr, cur.left + (int) (Math.random() * (cur.right - cur.left + 1)), cur.right);
+				mid = netherLandsFlag(arr, cur.left, cur.right);
+				op.offer(new Op(cur.left, mid[0] - 1));
+				op.offer(new Op(mid[1] + 1, cur.right));
+			}
+		}
+	}
+	
+	/**
+	 * 荷兰国旗问题
+	 * 
+	 * @param arr 数组
+	 * @param left 下标
+	 * @param right 下标
+	 * @return int[] 返回值
+	 */
+	public static int[] netherLandsFlag02(int[] arr, int left, int right) {
+		if (left > right) {
+			return new int[] {-1, -1};
+		}
+		
+		if (left == right) {
+			return new int[] {left, right};
+		}
+		
+		int lessL = left - 1;
+		int lessR = right;
+		int index = left;
+		
+		while (index < lessR) {
+			if (arr[index] == arr[right]) {
+				index++;
+			} else if (arr[index] < arr[right]) {
+				swap(arr, index++, ++lessL);
+			} else {
+				swap(arr, index, --lessR);
+			}
+		}
+		
+		swap(arr, right, lessR);
+		
+		return new int[] {lessL + 1, lessR};
 	}
 	
 	/**
@@ -291,13 +307,17 @@ public class Code02_QuickSort {
 		for (int i = 0; i < testTimes; i++) {
 			int[] arr = generateRandomArray(maxLength, maxValue);
 			int[] copyArray = copyArray(arr);
+			int[] copyArray1 = copyArray(arr);
+			int[] copyArray2 = copyArray(arr);
 			
-//			quickSort01(arr);
-//			quickSort02(arr);
-			quickSort(arr);
-			Arrays.sort(copyArray);
+			Arrays.sort(arr);
+			quickSort(copyArray);
+			quickSort01(copyArray1);
+			quickSort02(copyArray2);
 			
-			if (!isEqual(arr, copyArray)) {
+			if (!isEqual(arr, copyArray) ||
+				!isEqual(arr, copyArray1) ||
+				!isEqual(arr, copyArray2)) {
 				System.out.println("Oops");
 				break;
 			}
@@ -314,5 +334,4 @@ public class Code02_QuickSort {
 	public static void main(String[] args) {
 		test();
 	}
-	
 }
