@@ -26,7 +26,7 @@ public class Code01_CountOfRangeSum {
 			sum[i] = sum[i - 1] + arr[i];
 		}
 		
-		return process(sum, 0, arr.length, lower, upper);
+		return process(sum, 0, arr.length - 1, lower, upper);
 	}
 	
 	public static int process(long[] arr, int left, int right, int lower, int upper) {
