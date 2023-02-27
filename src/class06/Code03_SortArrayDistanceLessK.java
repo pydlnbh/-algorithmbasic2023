@@ -1,46 +1,48 @@
-package src.class01;
+package src.class06;
 
 import java.util.Arrays;
+import java.util.PriorityQueue;
 
 /**
- * 选择排序及其对数器验证
+ * 已知一个几乎有序的数组。几乎有序是指，如果把数组排好顺序的话，每个元素移动的距离一定不超过k
+ * k相对于数组长度来说是比较小的。请选择一个合适的排序策略，对这个数组进行排序。
  * 
  * @author peiyiding
  *
  */
-public class Code01_SelectionSort {
-	
+public class Code03_SortArrayDistanceLessK {
 	/**
-	 * 选择排序
+	 * 解题方法
 	 * 
 	 * @param arr 数组
+	 * @param k 距离
 	 */
-	public static void selectionSort(int[] arr) {
-		if (null == arr || 
-			arr.length < 2) {
+	public static void solution(int[] arr, int k) {
+		// 边界条件
+		if (k == 0) {
 			return;
 		}
 		
-		for (int i = 0; i < arr.length; i++) {
-			int minNumIndex = i;
-			for (int j = i + 1; j < arr.length; j++) {
-				minNumIndex = arr[j] < arr[minNumIndex] ? j : minNumIndex;
-			}
-			swap(arr, minNumIndex, i);
+		// 使用PriorityQueue最小堆对象
+		PriorityQueue<Integer> heap = new PriorityQueue<>();
+		int index = 0;
+		
+		// 先把k-1个数放入堆中
+		for (; index <= Math.min(arr.length - 1, k - 1); index++) {
+			heap.add(arr[index]);
 		}
-	}
-	
-	/**
-	 * 交换函数
-	 *
-	 * @param arr 数组
-	 * @param i 下标i
-	 * @param j 下标j
-	 */
-	public static void swap(int[] arr, int i, int j) {
-		int temp = arr[i];
-		arr[i] = arr[j];
-		arr[j] = temp;
+		
+		// 再加一个弹一个
+		int i = 0;
+		for (; index < arr.length; i++, index++) {
+			heap.add(arr[index]);
+			arr[i] = heap.poll();
+		}
+		
+		// 如果剩不到k个, 依次添加
+		while (!heap.isEmpty()) {
+			arr[i++] = heap.poll();
+		}
 	}
 	
 	/**
@@ -48,13 +50,30 @@ public class Code01_SelectionSort {
 	 * 
 	 * @param maxSize 数组长度最大值
 	 * @param maxValue 数组元素最大值
+	 * @param k 距离
 	 * @return int[] 随机数组
 	 */
-	public static int[] generateRandomArray(int maxSize, int maxValue) {
+	public static int[] generateRandomArrayNoMoveMoreK(int maxSize, int maxValue, int k) {
 		int[] arr = new int[(int) (Math.random() * maxSize)];
 		
 		for (int i = 0; i < arr.length; i++) {
 			arr[i] = ((int) (Math.random() * maxValue) + 1) - ((int) (Math.random() * maxValue) + 1);
+		}
+		
+		Arrays.sort(arr);
+		
+		boolean[] isSwap = new boolean[arr.length];
+		
+		for (int i = 0; i < arr.length; i++) {
+			int j = Math.min(i + (int) (Math.random() * (k + 1)), arr.length - 1);
+			if (!isSwap[i] && !isSwap[j]) {
+				isSwap[i] = true;
+				isSwap[j] = true;
+				
+				int t = arr[i];
+				arr[i] = arr[j];
+				arr[j] = t;
+			}
 		}
 		
 		return arr;
@@ -141,10 +160,11 @@ public class Code01_SelectionSort {
 		System.out.println("start");
 		
 		for (int i = 0; i < testTimes; i++) {
-			int[] arr1 = generateRandomArray(maxSize, maxValue);
+			int k = (int) (Math.random() * maxSize) + 1;
+			int[] arr1 = generateRandomArrayNoMoveMoreK(maxSize, maxValue, k);
 			int[] arr2 = copyArray(arr1);
 			
-			selectionSort(arr1);
+			solution(arr1, k);
 			Arrays.sort(arr2);
 			
 			randomPrint(printFlag, arr1, arr2);
