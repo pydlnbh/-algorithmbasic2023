@@ -42,44 +42,6 @@ public class Code06_NearRight {
 	}
 	
 	/**
-	 * 对数器
-	 */
-	public static void test() {
-		int maxSize = 100;
-		int maxValue = 100;
-		int testTimes = 1000;
-		boolean printFlag = false;
-		
-		System.out.println("start");
-		
-		for (int i = 0; i < testTimes; i++) {
-			int[] arr = generateRandomSortedArray(maxSize, maxValue);
-			
-			int	randomNum = (Math.random() < 0.5 && 0 < arr.length) ? 
-							arr[(int) (Math.random() * arr.length)] :
-						    (int) (Math.random() * maxValue) - (int) (Math.random() * maxValue);
-			
-			int ans1 = testNearRight(arr, randomNum);
-			int ans2 = nearRightIndex(arr, randomNum);
-			
-			randomPrint(printFlag, arr, randomNum);
-			
-			if (ans1 != ans2) {
-				System.out.println("Oops");
-				System.out.println("num = " + randomNum);
-				for (int j = 0; j < arr.length; j++) {
-					String comma = j == arr.length - 1 ? "\n" : ", ";
-					System.out.print(arr[j] + comma);
-				}
-				System.out.println("ans1 = " + ans1 + ", ans2 = " + ans2);
-				break;
-			}
-		}
-		
-		System.out.println("end");
-	}
-	
-	/**
 	 * 生成随机有序数组
 	 * 
 	 * @param maxSize 数组最大长度
@@ -136,6 +98,44 @@ public class Code06_NearRight {
 	}
 	
 	/**
+	 * 对数器
+	 */
+	public static void test() {
+		int maxSize = 100;
+		int maxValue = 100;
+		int testTimes = 1000;
+		boolean printFlag = false;
+		
+		System.out.println("start");
+		
+		for (int i = 0; i < testTimes; i++) {
+			int[] arr = generateRandomSortedArray(maxSize, maxValue);
+			
+			int	randomNum = (Math.random() < 0.5 && 0 < arr.length) ? 
+							arr[(int) (Math.random() * arr.length)] :
+						    (int) (Math.random() * maxValue) - (int) (Math.random() * maxValue);
+			
+			int ans1 = testNearRight(arr, randomNum);
+			int ans2 = nearRightIndex(arr, randomNum);
+			
+			randomPrint(printFlag, arr, randomNum);
+			
+			if (ans1 != ans2) {
+				System.out.println("Oops");
+				System.out.println("num = " + randomNum);
+				for (int j = 0; j < arr.length; j++) {
+					String comma = j == arr.length - 1 ? "\n" : ", ";
+					System.out.print(arr[j] + comma);
+				}
+				System.out.println("ans1 = " + ans1 + ", ans2 = " + ans2);
+				break;
+			}
+		}
+		
+		System.out.println("end");
+	}
+	
+	/**
 	 * main
 	 * 
 	 * @parm args 标准入参
@@ -143,5 +143,4 @@ public class Code06_NearRight {
 	public static void main(String[] args) {
 		test();
 	}
-	
 }

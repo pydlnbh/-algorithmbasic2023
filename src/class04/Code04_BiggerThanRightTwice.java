@@ -184,40 +184,4 @@ public class Code04_BiggerThanRightTwice {
 	public static void main(String[] args) {
 		test();
 	}
-	
-	public static int merge01(int[] arr, int left, int mid, int right)  {
-		// 先处理数值
-		int ans = 0;
-		int r = mid + 1;
-		
-		for (int i = left; i <= mid; i++) {
-			while (r <= right && arr[i] > (arr[r] << 1)) {
-				r++;
-			}
-			ans += r - 1 - mid;
-		}
-		
-		int[] help = new int[right - left + 1];
-		int i = 0;
-		int p1 = left;
-		int p2 = mid + 1;
-		
-		while (p1 <= mid && p2 <= right) {
-			help[i++] = arr[p1] <= arr[p2] ? arr[p1++] : arr[p2++];
-		}
-		
-		while (p1 <= mid) {
-			help[i++] = arr[p1++];
-		}
-		
-		while (p2 <= right) {
-			help[i++] = arr[p2++];
-		}
-		
-		for (i = 0; i < help.length; i++) {
-			arr[left + i] = help[i];
-		}
-		
-		return ans;
-	}
 }
