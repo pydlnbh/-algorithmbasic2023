@@ -61,7 +61,7 @@ public class Code05_GetMinStack {
 	}
 	
 	/**
-	 * 最小栈第一种写法, 如果不是最小数, 重复把最小栈的栈顶压栈一次, 最小栈和数据栈size一定相等
+	 * 最小栈第二种写法, 如果不是最小数, 重复把最小栈的栈顶压栈一次, 最小栈和数据栈size一定相等
 	 */
 	public static class MyStack02 {
 		private Stack<Integer> stack;
