@@ -70,7 +70,7 @@ public class Code02_HeapPlus<T> {
 	
 	public void remove(Inner<T> obj) {
 		Inner<T> replace = heap.get(heapSize - 1);
-		int index = indexMap.get(replace);
+		int index = indexMap.get(obj);
 		indexMap.remove(obj);
 		heap.remove(--heapSize);
 		
