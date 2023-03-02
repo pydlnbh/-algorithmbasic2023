@@ -39,7 +39,7 @@ public class Code03_ReversePair {
 		int mid = left + ((right - left) >> 1);
 		return process(arr, left, mid) +
 				process(arr, mid + 1, right) +
-				merge01(arr, left, mid, right);
+				merge(arr, left, mid, right);
 	}
 	
 	/**
@@ -166,32 +166,5 @@ public class Code03_ReversePair {
 	 */
 	public static void main(String[] args) {
 		test();
-	}
-	
-	public static int merge01(int[] arr, int left, int mid, int right) {
-		int[] help = new int[right - left + 1];
-		int i = help.length - 1;
-		int p1 = mid;
-		int p2 = right;
-		int ans = 0;
-	
-		while (p1 >= left && p2 > mid) {
-			ans += arr[p1] > arr[p2] ? p2 - mid : 0;
-			help[i--] = arr[p2] >= arr[p1] ? arr[p2--] : arr[p1--];
-		}
-		
-		while (p1 >= left) {
-			help[i--] = arr[p1--];
-		}
-		
-		while (p2 > mid) {
-			help[i--] = arr[p2--];
-		}
-		
-		for (i = 0; i < help.length; i++) {
-			arr[left + i] = help[i];
-		}
-		
-		return ans;
 	}
 }
