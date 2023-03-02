@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * 加强堆的实现
+ * 加强堆的实现, 小根堆heapInsert、heapify比较判断小于0; 大根堆比较判断大于0
  * 
  * @author peiyiding
  *
@@ -116,15 +116,15 @@ public class Code02_HeapPlus<T> {
 	public void heapify(int index) {
 		int left = index * 2 + 1;
 		while (left < heapSize) {
-			int max = left + 1 < heapSize && (comparator.compare(heap.get(left + 1), heap.get(left)) > 0) ? left + 1 : left;
-			max = comparator.compare(heap.get(max), heap.get(index)) > 0 ? max : index;
+			int min = left + 1 < heapSize && (comparator.compare(heap.get(left + 1), heap.get(left)) < 0) ? left + 1 : left;
+			min = comparator.compare(heap.get(min), heap.get(index)) < 0 ? min : index;
 			
-			if (max == index) {
+			if (min == index) {
 				break;
 			}
 			
-			swap(index, max);
-			index = max;
+			swap(index, min);
+			index = min;
 			left = index * 2 + 1;
 		}
 	}
