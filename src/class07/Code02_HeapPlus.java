@@ -74,7 +74,7 @@ public class Code02_HeapPlus<T> {
 		indexMap.remove(obj);
 		heap.remove(--heapSize);
 		
-		while (obj != replace) {
+		if (obj != replace) {
 			heap.set(index, replace);
 			indexMap.put(replace, index);
 			resign(replace);
