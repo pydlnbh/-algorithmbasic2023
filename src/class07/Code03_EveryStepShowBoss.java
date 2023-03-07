@@ -5,6 +5,8 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
+import src.Solution;
+
 /**
  * 
  * 做一个加强堆的题目，给定一个整型数组，int[] arr；和一个布尔类型数组，boolean[] op
@@ -317,7 +319,8 @@ public class Code03_EveryStepShowBoss {
 			int k = (int) (Math.random() * maxK) + 1;
 			int[] arr = testData.arr;
 			boolean[] op = testData.op;
-			List<List<Integer>> ans1 = topK(arr, op, k);
+			List<List<Integer>> ans1 = new Solution().solution(arr, op, k);
+//			List<List<Integer>> ans1 = topK(arr, op, k);
 			List<List<Integer>> ans2 = compare(arr, op, k);
 			if (!sameAnswer(ans1, ans2)) {
 				for (int j = 0; j < arr.length; j++) {

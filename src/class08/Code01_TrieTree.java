@@ -3,7 +3,7 @@ package src.class08;
 import java.util.HashMap;
 
 /**
- * 前缀树
+ * 前缀树实现
  */
 public class Code01_TrieTree {
 	
