@@ -297,7 +297,7 @@ public List<List<Integer>>  topK (int[] arr, boolean[] op, int k)
 
 前缀树实现
 
-计数排序 标记
+计数排序
 
 基数排序
 
@@ -313,7 +313,7 @@ public List<List<Integer>>  topK (int[] arr, boolean[] op, int k)
 
 工程上对排序的常见改进
 
-链表面试题的常见技巧
+链表面试题的常见技巧 标记
 
 题目：
 
