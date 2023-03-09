@@ -1,6 +1,6 @@
 package src;
 
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * 随机题目
