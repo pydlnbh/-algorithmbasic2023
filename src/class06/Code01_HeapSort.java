@@ -179,7 +179,7 @@ public class Code01_HeapSort {
 		int maxSize = 100;
 		int maxValue = 100;
 		int testTimes = 1000;
-		boolean printFlag = true;
+		boolean printFlag = false;
 		
 		System.out.println("start");
 		
@@ -194,6 +194,7 @@ public class Code01_HeapSort {
 			
 			if (!isEqual(arr1, arr2)) {
 				System.out.println("Oops");
+				break;
 			}
 		}
 		
