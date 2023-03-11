@@ -308,29 +308,51 @@ public class Code03_EveryStepShowBoss {
 
 	private static void test() {
 		int maxValue = 10;
-		int maxLen = 100;
+		int maxLen = 5;
 		int maxK = 6;
 		int testTimes = 1000;
+		
 		System.out.println("测试开始");
+		
 		for (int i = 0; i < testTimes; i++) {
+			
 			Data testData = randomData(maxValue, maxLen);
 			int k = (int) (Math.random() * maxK) + 1;
 			int[] arr = testData.arr;
 			boolean[] op = testData.op;
+			
 			List<List<Integer>> ans1 = topK(arr, op, k);
 			List<List<Integer>> ans2 = compare(arr, op, k);
+			
 			if (!sameAnswer(ans1, ans2)) {
+				System.out.println("\nint k = " + k + ";\n");
+				
+				String comma = "";
+				System.out.print("int[] arr = {");
 				for (int j = 0; j < arr.length; j++) {
-					System.out.println(arr[j] + " , " + op[j]);
+					comma = j == arr.length - 1 ? "};\n" : ", "; 
+					System.out.print(arr[j] + comma);
 				}
-				System.out.println(k);
-				System.out.println(ans1);
-				System.out.println(ans2);
-				System.out.println("出错了！");
+				
+				System.out.println("");
+				
+				System.out.print("boolean[] op = {");
+				for (int j = 0; j < arr.length; j++) {
+					comma = j == arr.length - 1 ? "};\n" : ", ";
+					System.out.print(op[j] + comma);
+				}
+				
+				System.out.println("\n=============\n");
+			
+				System.out.println("Answer1 = " + ans1 + "\n");
+				System.out.println("Answer2 = " + ans2 + "\n");
+				System.out.println("Oops");
 				break;
 			}
 		}
+		
 		System.out.println("测试结束");
+		
 	}
 	
 	public static void main(String[] args) {
