@@ -56,32 +56,6 @@ public class Code07_MiniNum {
 	}
 	
 	/**
-	 * 对数器
-	 */
-	public static void test() {
-		int maxSize = 100;
-		int maxValue = 100;
-		int testTimes = 1000;
-		
-		System.out.println("start");
-		
-		for (int i = 0; i < testTimes; i++) {
-			int[] arr = generateRandomArray(maxSize, maxValue);
-			
-			int iAns = miniNumIndex(arr);
-//			boolean bAns = testMiniNumIndex(arr, iAns);
-			boolean bAns = check(arr, iAns);
-			
-			if (!bAns) {
-				System.out.println("Oops");
-				break;
-			}
-		}
-		
-		System.out.println("end");
-	}
-	
-	/**
 	 * 生成随机数组, 要求相邻不连续
 	 * 
 	 * @param maxSize 数组最大长度
@@ -160,6 +134,32 @@ public class Code07_MiniNum {
 		boolean rightBigger = right <= arr.length - 1 ? arr[right] > arr[index] : true;
 		
 		return leftBigger && rightBigger;
+	}
+	
+	/**
+	 * 对数器
+	 */
+	public static void test() {
+		int maxSize = 100;
+		int maxValue = 100;
+		int testTimes = 1000;
+		
+		System.out.println("start");
+		
+		for (int i = 0; i < testTimes; i++) {
+			int[] arr = generateRandomArray(maxSize, maxValue);
+			
+			int iAns = miniNumIndex(arr);
+//			boolean bAns = testMiniNumIndex(arr, iAns);
+			boolean bAns = check(arr, iAns);
+			
+			if (!bAns) {
+				System.out.println("Oops");
+				break;
+			}
+		}
+		
+		System.out.println("end");
 	}
 	
 	/**
