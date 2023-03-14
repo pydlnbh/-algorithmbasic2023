@@ -15,8 +15,8 @@ public class Code02_DeleteGivenValue {
 	 * 单链表静态类
 	 */
 	public static class Node {
-		int val;
-		Node next;
+		public int val;
+		public Node next;
 
 		public Node(int val) {
 			this.val = val;
@@ -27,9 +27,9 @@ public class Code02_DeleteGivenValue {
 	 * 双向链表静态类
 	 */
 	public static class DoubleNode {
-		int val;
-		DoubleNode last;
-		DoubleNode next;
+		public int val;
+		public DoubleNode last;
+		public DoubleNode next;
 
 		public DoubleNode(int val) {
 			this.val = val;
