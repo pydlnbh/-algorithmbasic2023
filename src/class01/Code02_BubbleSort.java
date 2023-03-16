@@ -42,35 +42,6 @@ public class Code02_BubbleSort {
 		arr[i] = arr[j];
 		arr[j] = temp;
 	}
-
-	
-	/**
-	 * 对数器
-	 */
-	public static void test() {
-		int maxSize = 100;
-		int maxValue = 100;
-		int testTimes = 1000;
-		boolean printFlag = false;
-		
-		System.out.println("start");
-		
-		for (int i = 0; i < testTimes; i++) {
-			int[] arr1 = generateRandomArray(maxSize, maxValue);
-			int[] arr2 = copyArray(arr1);
-			
-			bubbleSort(arr1);
-			Arrays.sort(arr2);
-			
-			randomPrint(printFlag, arr1, arr2);
-			
-			if (!isEqual(arr1, arr2)) {
-				System.out.println("Oops");
-			}
-		}
-		
-		System.out.println("end");
-	}
 	
 	/**
 	 * 生成随机数组
@@ -156,6 +127,34 @@ public class Code02_BubbleSort {
 		}
 		
 		return true;
+	}
+	
+	/**
+	 * 对数器
+	 */
+	public static void test() {
+		int maxSize = 100;
+		int maxValue = 100;
+		int testTimes = 1000;
+		boolean printFlag = false;
+		
+		System.out.println("start");
+		
+		for (int i = 0; i < testTimes; i++) {
+			int[] arr1 = generateRandomArray(maxSize, maxValue);
+			int[] arr2 = copyArray(arr1);
+			
+			bubbleSort(arr1);
+			Arrays.sort(arr2);
+			
+			randomPrint(printFlag, arr1, arr2);
+			
+			if (!isEqual(arr1, arr2)) {
+				System.out.println("Oops");
+			}
+		}
+		
+		System.out.println("end");
 	}
 	
 	/**
