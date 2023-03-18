@@ -41,45 +41,6 @@ public class Code04_TwoOddTimes {
 	}
 	
 	/**
-	 * 对数器
-	 */
-	public static void test() {
-		int range = 100;
-		int maxOdd = 10;
-		int maxEven = 10;
-		int testTimes = 1000;
-		boolean printFlag = false;
-		
-		System.out.println("start");
-		
-		for (int i = 0; i < testTimes; i++) {
-			int[] arr = generateRandomArray(maxOdd, maxEven, range);
-			
-			int[] ans1 = twoOddTimesNum(arr);
-			int[] ans2 = testTwoOddTimesNum(arr);
-			
-			randomPrint(arr, ans1, ans2, printFlag);
-			
-			if (!isEqual(ans1, ans2)) {
-				System.out.println("Oops");
-				
-				printArray(ans1);
-				
-				printArray(ans2);
-
-				for (int j = 0; j < arr.length; j++) {
-					String comma = j == arr.length - 1 ? "\n" : ", ";
-					System.out.print(arr[j] + comma);
-				}
-				
-				break;
-			}
-		}
-		
-		System.out.println("end");
-	}
-	
-	/**
 	 * 生成随机数组
 	 * 
 	 * @param maxOdd 奇数次最大值
@@ -229,6 +190,45 @@ public class Code04_TwoOddTimes {
 		}
 		
 		return false;
+	}
+	
+	/**
+	 * 对数器
+	 */
+	public static void test() {
+		int range = 100;
+		int maxOdd = 10;
+		int maxEven = 10;
+		int testTimes = 1000;
+		boolean printFlag = false;
+		
+		System.out.println("start");
+		
+		for (int i = 0; i < testTimes; i++) {
+			int[] arr = generateRandomArray(maxOdd, maxEven, range);
+			
+			int[] ans1 = twoOddTimesNum(arr);
+			int[] ans2 = testTwoOddTimesNum(arr);
+			
+			randomPrint(arr, ans1, ans2, printFlag);
+			
+			if (!isEqual(ans1, ans2)) {
+				System.out.println("Oops");
+				
+				printArray(ans1);
+				
+				printArray(ans2);
+
+				for (int j = 0; j < arr.length; j++) {
+					String comma = j == arr.length - 1 ? "\n" : ", ";
+					System.out.print(arr[j] + comma);
+				}
+				
+				break;
+			}
+		}
+		
+		System.out.println("end");
 	}
 	
 	/**
