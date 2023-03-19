@@ -151,6 +151,11 @@ public class Code02_SamllNum {
 			int ans2 = testMethod(arr1);
 			
 			if (ans1 != ans2) {	
+				for (int num : arr) {
+					System.out.print(num + " ");
+				}
+				
+				System.out.println("\nans1 = " + ans1 + ", ans2 = " + ans2);
 				System.out.println("Oops");
 				break;
 			}
