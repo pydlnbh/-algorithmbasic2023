@@ -38,6 +38,30 @@ public class Code03_RightOne {
 	}
 	
 	/**
+	 * 对数器测试方法
+	 * 
+	 * @param num 数值
+	 * @return int num最右侧的1
+	 */
+	public static int testRightOneBit(int num) {
+		int ans = 0;
+		int[] arr = new int[32];
+		
+		for (int i = 0; i < 32; i++) {
+			arr[i] += num & (1 << i);
+		}
+		
+		for (int i = 0; i < 32; i++) {
+			if (arr[i] != 0) {
+				ans |= (1 << i);
+				break;
+			}
+		}
+		
+		return ans;
+	}
+
+	/**
 	 * 对数器
 	 */
 	public static void test() {
@@ -66,31 +90,7 @@ public class Code03_RightOne {
 		
 		System.out.println("end");
 	}
-	
-	/**
-	 * 对数器测试方法
-	 * 
-	 * @param num 数值
-	 * @return int num最右侧的1
-	 */
-	public static int testRightOneBit(int num) {
-		int ans = 0;
-		int[] arr = new int[32];
-		
-		for (int i = 0; i < 32; i++) {
-			arr[i] += num & (1 << i);
-		}
-		
-		for (int i = 0; i < 32; i++) {
-			if (arr[i] != 0) {
-				ans |= (1 << i);
-				break;
-			}
-		}
-		
-		return ans;
-	}
-	
+
 	/**
 	 * main
 	 * 
