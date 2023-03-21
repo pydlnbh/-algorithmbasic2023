@@ -3,9 +3,7 @@ package src;
 import java.util.*;
 
 public class Solution {
-	/**
-	 * Randomly generate a question number from the total number of questions learned
-	 */
+	// Randomly generate a question number from the total number of questions learned
 	private static void randomQuestionNo() {
 		try (Scanner sc = new Scanner(System.in)) {			
 			System.out.print("一共学习了几道题: ");
@@ -13,11 +11,7 @@ public class Solution {
 		}
 	}
 
-	/**
-	 * main
-	 * 
-	 * @param args
-	 */
+	// main
 	public static void main(String[] args) {
 		randomQuestionNo();
 	}
