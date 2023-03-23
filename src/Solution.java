@@ -18,7 +18,8 @@ public class Solution {
 
 	// main
 	public static void main(String[] args) {
-		if (args.length < 1) {
+		if (args.length < 1 ||
+			Objects.isNull(args)) {
 			System.out.println("please input args (type: int)");
 			return;
 		}
