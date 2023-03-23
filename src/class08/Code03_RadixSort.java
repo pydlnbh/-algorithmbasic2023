@@ -2,6 +2,8 @@ package src.class08;
 
 import java.util.Arrays;
 
+import src.Solution;
+
 /**
  * 基数排序
  */
@@ -198,7 +200,7 @@ public class Code03_RadixSort {
 	 * 对数器
 	 */
 	public static void test() {
-		int maxSize = 100;
+		int maxSize = 5;
 		int maxValue = 100;
 		int testTimes = 1000;
 		boolean printFlag = false;
@@ -208,13 +210,17 @@ public class Code03_RadixSort {
 		for (int i = 0; i < testTimes; i++) {
 			int[] arr1 = generateRandomArray(maxSize, maxValue);
 			int[] arr2 = copyArray(arr1);
+			int[] arr3 = copyArray(arr1);
 			
-			radixSort(arr1);
-			Arrays.sort(arr2);
+			radixSort(arr2);
+			Arrays.sort(arr3);
 			
-			randomPrint(printFlag, arr1, arr2);
+			randomPrint(printFlag, arr2, arr3);
 			
-			if (!isEqual(arr1, arr2)) {
+			if (!isEqual(arr2, arr3)) {
+				Solution.printArray(arr1);
+				Solution.printArray(arr2);
+				Solution.printArray(arr3);
 				System.out.println("Oops");
 				break;
 			}
