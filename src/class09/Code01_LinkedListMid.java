@@ -248,52 +248,27 @@ public class Code01_LinkedListMid {
 		
 		System.out.println();
 
-		ans1 = solution(test);
+		ans1 = midOrDownMidNode(test);
 		ans2 = right2(test);
 		System.out.println(ans1 != null ? ans1.value : "无");
 		System.out.println(ans2 != null ? ans2.value : "无");
 		
 		System.out.println();
 
-		ans1 = solution(test);
+		ans1 = midOrUpMidPreNode(test);
 		ans2 = right3(test);
 		System.out.println(ans1 != null ? ans1.value : "无");
 		System.out.println(ans2 != null ? ans2.value : "无");
 		
 		System.out.println();
 
-		ans1 = solution(test);
+		ans1 = midOrDownMidPreNode(test);
 		ans2 = right4(test);
 		System.out.println(ans1 != null ? ans1.value : "无");
 		System.out.println(ans2 != null ? ans2.value : "无");
 	}
-	public static Node solution(Node head) {
-		if (head == null ||
-			head.next == null ||
-			head.next.next == null) {
-			return head;
-		}
-		
-//		Node slow = head.next;
-//		Node fast = head.next.next;
-		
-//		Node slow = head.next;
-//		Node fast = head.next;
-//		
-//		Node slow = head;
-//		Node fast = head.next.next;
-//		
-		Node slow = head;
-		Node fast = head.next;
-		
-		while (fast.next != null && 
-			   fast.next.next != null) {
-			slow = slow.next;
-			fast = fast.next.next;
-		}
-		
-		return slow;
-	}
+
+	// main
 	public static void main(String[] args) {
 		test();
 	}
