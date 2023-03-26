@@ -13,7 +13,7 @@ public class Code01_LinkedListMid {
 	/**
 	 * 自定义链表结点类
 	 */
-	private static class Node {
+	public static class Node {
 		private int value;
 		private Node next;
 		
