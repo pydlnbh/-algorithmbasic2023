@@ -1,25 +1,12 @@
 package src.class12;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
+import src.Solution.*;
 
 /**
  * 判断二叉树是不是完全二叉树（一般方法解决、递归套路解决）
  */
 public class Code01_IsCBT {
-	/**
-	 * 二叉树结构
-	 */
-	public static class TreeNode {
-		public int value;
-		public TreeNode left;
-		public TreeNode right;
-		
-		public TreeNode(int _value) {
-			value = _value;
-		}
-	}
-	
 	/**
 	 * no recursive method
 	 * 
