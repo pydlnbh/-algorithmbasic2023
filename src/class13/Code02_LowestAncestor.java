@@ -8,7 +8,7 @@ import src.Solution;
 import src.Solution.TreeNode;
 
 // 给定一棵二叉树的头节点head，和另外两个节点a和b，返回a和b的最低公共祖先
-public class Code03_LowestAncestor {
+public class Code02_LowestAncestor {
 	public static TreeNode lowestAncestor1(TreeNode head, TreeNode o1, TreeNode o2) {
 		if (head == null) {
 			return null;
