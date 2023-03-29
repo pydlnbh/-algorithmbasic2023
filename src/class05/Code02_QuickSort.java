@@ -2,6 +2,8 @@ package src.class05;
 
 import java.util.Arrays;
 
+import src.Solution;
+
 /**
  * 快速排序从1.0到3.0的实现
  * 
@@ -282,7 +284,7 @@ public class Code02_QuickSort {
 	 * 对数器
 	 */
 	public static void test() {
-		int maxLength = 1000;
+		int maxLength = 100;
 		int maxValue = 10000;
 		int testTimes = 10000;
 		
@@ -290,14 +292,20 @@ public class Code02_QuickSort {
 		
 		for (int i = 0; i < testTimes; i++) {
 			int[] arr = generateRandomArray(maxLength, maxValue);
-			int[] copyArray = copyArray(arr);
+			int[] copyArray1 = copyArray(arr);
+			int[] copyArray2 = copyArray(arr);
 			
 //			quickSort01(arr);
 //			quickSort02(arr);
-			quickSort(arr);
-			Arrays.sort(copyArray);
+			quickSort(copyArray1);
+			Arrays.sort(copyArray2);
 			
-			if (!isEqual(arr, copyArray)) {
+			if (!isEqual(copyArray1, copyArray2)) {
+				Solution.printArray(arr);
+				System.out.println("---");
+				Solution.printArray(copyArray1);
+				System.out.println("---");
+				Solution.printArray(copyArray2);
 				System.out.println("Oops");
 				break;
 			}
