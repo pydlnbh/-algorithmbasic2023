@@ -12,7 +12,7 @@ import src.Solution;
  * 但如果先把长度60的金条分成30和30，花费60；再把长度30金条分成10和20，花费30；一共花费90铜板
  * 输入一个数组，返回分割的最小代价
  */
-public class Code02_LessMoneySplictGold {
+public class Code02_LessMoneySplitGold {
 	// solution one
 	public static int lessMoney1(int[] arr) {
 		if (arr == null || arr.length < 1) {
