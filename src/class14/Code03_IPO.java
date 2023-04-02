@@ -42,7 +42,9 @@ public class Code03_IPO {
 	
 	// solution
 	public static int solution(int k, int w, int[] cost, int[] profix) {
-		if (cost == null || profix == null) {
+		if (cost == null 
+		|| cost.length == 0 
+		|| cost.length != profix.length) {
 			return 0;
 		}
 		
