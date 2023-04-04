@@ -136,7 +136,7 @@ public class Code03_InsertionSort {
 		int maxSize = 100;
 		int maxValue = 100;
 		int testTimes = 10;
-		boolean printFlag = true;
+		boolean printFlag = false;
 		
 		System.out.println("start");
 		
