@@ -47,8 +47,8 @@ public class Code05_UnionFind {
 		}
 		
 		public void union(V obj1, V obj2) {
-			V parent1 = parentMap.get(obj1);
-			V parent2 = parentMap.get(obj2);
+			V parent1 = findParent(obj1);
+			V parent2 = findParent(obj2);
 			
 			if (parent1 != parent2) {
 				int size1 = sizeMap.get(parent1);
@@ -101,8 +101,8 @@ public class Code05_UnionFind {
 			}
 			
 			public static void union(int x, int y) {
-				int p1 = parent[x];
-				int p2 = parent[y];
+				int p1 = find(x);
+				int p2 = find(y);
 				
 				while (p1 != p2) {
 					int size1 = size[p1];
