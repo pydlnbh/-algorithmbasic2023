@@ -90,7 +90,7 @@ public class Code05_UnionFind {
 				}
 				
 				for (hi--; hi >= 0; hi--) {
-					parent[help[i]] = i; 
+					parent[help[hi]] = i; 
 				}
 				
 				return i;
@@ -126,6 +126,7 @@ public class Code05_UnionFind {
 			while (in.nextToken() != StreamTokenizer.TT_EOF) {
 				int n = (int) in.nval;
 				UnionFind2.init(n);
+				
 				in.nextToken();
 				int m = (int) in.nval;
 				
