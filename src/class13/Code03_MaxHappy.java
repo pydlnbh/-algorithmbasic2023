@@ -124,8 +124,8 @@ public class Code03_MaxHappy {
 	
 	// for test
 	public static void test() {
-		int maxLevel = 10;
-		int maxNexts = 10;
+		int maxLevel = 5;
+		int maxNexts = 2;
 		int maxValue = 100;
 		int testTimes = 1000;
 		
@@ -144,5 +144,10 @@ public class Code03_MaxHappy {
 		}
 		
 		System.out.println("end");
+	}
+	
+	// main
+	public static void main(String[] args) {
+		test();
 	}
 }
