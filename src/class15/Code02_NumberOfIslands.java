@@ -265,4 +265,102 @@ public class Code02_NumberOfIslands {
 			return sets;
 		}
 	}
+	
+	// for test
+	public static char[][] generateRandomMatrix(int row, int col) {
+		char[][] board = new char[row][col];
+		
+		for (int i = 0; i < row; i++) {
+			for (int j = 0; j < col; j++) {
+				board[i][j] = Math.random() < 0.5 ? '1' : '0';
+			}
+		}
+		
+		return board;
+	}
+	
+	// for test
+	public static char[][] copy(char[][] board) {
+		int row = board.length;
+		int col = board[0].length;
+		char[][] ans = new char[row][col];
+		
+		for (int i = 0; i < row; i++) {
+			for (int j = 0; j < col; j++) {
+				ans[i][j] = board[i][j];
+			}
+		}
+		
+		return ans;
+	}
+	
+	// for test
+	public static void test() {
+		int row = 0;
+		int col = 0;
+		char[][] board1 = null;
+		char[][] board2 = null;
+		char[][] board3 = null;
+		long start = 0;
+		long end = 0;
+		
+		row = 1000;
+		col = 1000;
+		
+		board1 = generateRandomMatrix(row, col);
+		board2 = copy(board1);
+		board3 = copy(board1);
+		
+		System.out.println("time test begin");
+		System.out.println("generate matrix row: " + row + ", col: " + col + "\n");
+		
+		start = System.currentTimeMillis();
+		System.out.println("recursive method answer: " + numIslands1(board1));
+		end = System.currentTimeMillis();
+		System.out.println("recursive method cost time: " + (end - start) + "ms\n");
+		
+		start = System.currentTimeMillis();
+		System.out.println("union method one(map) answer: " + numIslands2(board2));
+		end = System.currentTimeMillis();
+		System.out.println("union method one(map) cost time: " + (end - start) + "ms\n");
+		
+		start = System.currentTimeMillis();
+		System.out.println("union method two(array) answer: " + numIslands3(board3));
+		end = System.currentTimeMillis();
+		System.out.println("union method two(array) cost time: " + (end - start) + "ms\n");
+		
+		row = 10000;
+		col = 10000;
+		board1 = generateRandomMatrix(row, col);
+		board2 = copy(board1);
+		board3 = copy(board1);
+		
+		System.out.println("generate matrix row: " + row + ", col: " + col + "\n");
+		
+		start = System.currentTimeMillis();
+		System.out.println("recursive method answer: " + numIslands1(board1));
+		end = System.currentTimeMillis();
+		System.out.println("recursive method cost time: " + (end - start) + "ms\n");
+		
+		// too slow
+		/*
+		 * start = System.currentTimeMillis();
+		 * System.out.println("union method one(map) answer: " + numIslands2(board2));
+		 * end = System.currentTimeMillis();
+		 * System.out.println("union method one(map) cost time: " + (end - start) +
+		 * "ms\n");
+		 */
+		
+		start = System.currentTimeMillis();
+		System.out.println("union method two(array) answer: " + numIslands3(board3));
+		end = System.currentTimeMillis();
+		System.out.println("union method two(array) cost time: " + (end - start) + "ms\n");
+		
+		System.out.println("time test end");
+	}
+	
+	// main
+	public static void main(String[] args) {
+		test();
+	}
 }
