@@ -8,7 +8,7 @@ import java.util.Arrays;
  * @author peiyiding
  *
  */
-public class Code01_HeapSort {
+public class Code02_HeapSort {
 	/**
 	 * 堆排序的实现, 时间复杂度: O(N)*Log(N)
 	 * @param arr
