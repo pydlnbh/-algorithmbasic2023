@@ -1,26 +1,16 @@
 package src.class11;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
 import java.util.Stack;
+
+import src.Solution;
+import src.Solution.TreeNode;
 
 /**
  * 二叉树的序列化和反序列化
  */
 public class Code02_SerializeAndReconstructTree {
-	public static class TreeNode {
-		public int val;
-		public TreeNode left;
-		public TreeNode right;
-
-		public TreeNode(int v) {
-			val = v;
-		}
-	}
-
 	/**
 	 * 前序遍历序列化
 	 * 
@@ -47,7 +37,7 @@ public class Code02_SerializeAndReconstructTree {
 		if (head == null) {
 			queue.offer(null);
 		} else {
-			queue.offer(String.valueOf(head.val));
+			queue.offer(String.valueOf(head.value));
 			preProcess(head.left, queue);
 			preProcess(head.right, queue);
 		}
@@ -92,7 +82,7 @@ public class Code02_SerializeAndReconstructTree {
 		} else {
 			posProcess(head.left, ans);
 			posProcess(head.right, ans);
-			ans.offer(String.valueOf(head.val));
+			ans.offer(String.valueOf(head.value));
 		}
 	}
 
@@ -178,7 +168,7 @@ public class Code02_SerializeAndReconstructTree {
 		if (head == null) {
 			ans.add(null);
 		} else {
-			ans.offer(String.valueOf(head.val));
+			ans.offer(String.valueOf(head.value));
 			Queue<TreeNode> queue = new LinkedList<>();
 			queue.offer(head);
 
@@ -186,14 +176,14 @@ public class Code02_SerializeAndReconstructTree {
 				TreeNode cur = queue.poll();
 
 				if (cur.left != null) {
-					ans.add(String.valueOf(cur.left.val));
+					ans.add(String.valueOf(cur.left.value));
 					queue.add(cur.left);
 				} else {
 					ans.add(null);
 				}
 
 				if (cur.right != null) {
-					ans.add(String.valueOf(cur.right.val));
+					ans.add(String.valueOf(cur.right.value));
 					queue.add(cur.right);
 				} else {
 					ans.add(null);
@@ -304,145 +294,13 @@ public class Code02_SerializeAndReconstructTree {
 			return true;
 		}
 
-		if (head1.val != head2.val) {
+		if (head1.value != head2.value) {
 			return false;
 		}
 
 		return isSameValueStructure(head1.left, head2.left) && isSameValueStructure(head1.right, head2.right);
 	}
 
-//	/**
-//	 * 打印二叉树
-//	 * 
-//	 * @param head 头结点
-//	 */
-//	public static void printTree(TreeNode head) {
-//		System.out.println("Binary Tree: ");
-//		printInOrder(head, 0, "H", 17);
-//		System.out.println();
-//	}
-//	
-	/**
-	 * 递归打印
-	 * 
-	 * @param head   二叉树结点
-	 * @param height 深度
-	 * @param to     字符
-	 * @param len    长度
-	 */
-	public static void printInOrder(TreeNode head, int height, String to, int len) {
-		if (head == null) {
-			return;
-		}
-
-		printInOrder(head.right, height + 1, "v", len);
-
-		String val = to + head.val + to;
-		int lenM = val.length();
-		int lenL = (len - lenM) / 2;
-		int lenR = len - lenM - lenL;
-		val = getSpace(lenL) + val + getSpace(lenR);
-		System.out.println(getSpace(height * len) + val);
-		printInOrder(head.left, height + 1, "^", len);
-	}
-
-	public static String getSpace(int num) {
-		String space = " ";
-		StringBuffer buf = new StringBuffer("");
-		for (int i = 0; i < num; i++) {
-			buf.append(space);
-		}
-		return buf.toString();
-	}
-
-	// for test
-	public static void printTree(TreeNode root) {
-		int maxLevel = maxLevel(root);
-
-		printNodeInternal(Collections.singletonList(root), 1, maxLevel);
-	}
-
-	// for test
-	private static void printNodeInternal(List<TreeNode> nodes, int level, int maxLevel) {
-		if (nodes.isEmpty() || isAllElementsNull(nodes))
-			return;
-
-		int floor = maxLevel - level;
-		int endgeLines = (int) Math.pow(2, (Math.max(floor - 1, 0)));
-		int firstSpaces = (int) Math.pow(2, (floor)) - 1;
-		int betweenSpaces = (int) Math.pow(2, (floor + 1)) - 1;
-
-		printWhitespaces(firstSpaces);
-
-		List<TreeNode> newNodes = new ArrayList<>();
-		for (TreeNode node : nodes) {
-			if (node != null) {
-				System.out.print(node.val);
-				newNodes.add(node.left);
-				newNodes.add(node.right);
-			} else {
-				newNodes.add(null);
-				newNodes.add(null);
-				System.out.print(" ");
-			}
-
-			printWhitespaces(betweenSpaces);
-		}
-		System.out.println("");
-
-		for (int i = 1; i <= endgeLines; i++) {
-			for (int j = 0; j < nodes.size(); j++) {
-				printWhitespaces(firstSpaces - i);
-				if (nodes.get(j) == null) {
-					printWhitespaces(endgeLines + endgeLines + i + 1);
-					continue;
-				}
-
-				if (nodes.get(j).left != null)
-					System.out.print("/");
-				else
-					printWhitespaces(1);
-
-				printWhitespaces(i + i - 1);
-
-				if (nodes.get(j).right != null)
-					System.out.print("\\");
-				else
-					printWhitespaces(1);
-
-				printWhitespaces(endgeLines + endgeLines - i);
-			}
-
-			System.out.println("");
-		}
-
-		printNodeInternal(newNodes, level + 1, maxLevel);
-	}
-
-	// for test
-	private static boolean isAllElementsNull(List<TreeNode> list) {
-		for (Object object : list) {
-			if (object != null)
-				return false;
-		}
-
-		return true;
-	}
-
-	// for test
-	private static void printWhitespaces(int count) {
-		for (int i = 0; i < count; i++)
-			System.out.print(" ");
-	}
-
-	// for test
-	private static int maxLevel(TreeNode node) {
-		if (node == null)
-			return 0;
-
-		return Math.max(maxLevel(node.left), maxLevel(node.right)) + 1;
-	}
-	
 	/**
 	 * 测试方法
 	 */
@@ -465,11 +323,11 @@ public class Code02_SerializeAndReconstructTree {
 			TreeNode levelHead = buildByLevelQueue(levelQueue);
 
 			if (!isSameValueStructure(preHead, posHead) || !isSameValueStructure(preHead, levelHead)) {
-				printTree(head);
+				Solution.printTree(head);
 				System.out.println("==================");
-				printTree(preHead);
+				Solution.printTree(head);
 				System.out.println("==================");
-				printTree(posHead);
+				Solution.printTree(head);
 
 				System.out.println("Oops");
 				break;
