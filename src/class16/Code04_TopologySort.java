@@ -1,6 +1,7 @@
 package src.class16;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -38,7 +39,7 @@ public class Code04_TopologySort {
 		return result;
 	}
 	
-	// solution two bfs-1
+	// solution two BFS-1
     public ArrayList<DirectedGraphNode> topSort(ArrayList<DirectedGraphNode> graph) {
         HashMap<DirectedGraphNode, Integer> inMap = new HashMap<>();
         
@@ -74,6 +75,120 @@ public class Code04_TopologySort {
         }
         
         return result;
+    }
+    
+    // solution three DFS-1
+    public static ArrayList<DirectedGraphNode> topSort1(ArrayList<DirectedGraphNode> graph) {
+    	HashMap<DirectedGraphNode, Record1> map = new HashMap<>();
+    	for (DirectedGraphNode node : graph) {
+    		f1(node, map);
+    	}
+    	
+    	ArrayList<Record1> recordArr = new ArrayList<>();
+    	for (Record1 r : map.values()) {
+    		recordArr.add(r);
+    	}
+    	
+    	recordArr.sort(new MyComparator1());
+
+    	ArrayList<DirectedGraphNode> result = new ArrayList<>(); 
+    	for (Record1 r : recordArr) {
+    		result.add(r.node);
+    	}
+    	
+    	return result;
+    }
+    
+    // auxiliary class
+    public static class Record1 {
+    	public DirectedGraphNode node;
+    	public long nodes;
+    	
+    	public Record1(DirectedGraphNode n, long l) {
+    		node = n;
+    		nodes = l;
+    	}
+    }
+    
+    // auxiliary class
+    public static class MyComparator1 implements Comparator<Record1> {
+    	@Override
+    	public int compare(Record1 o1, Record1 o2) {
+    		return o1.nodes == o2.nodes ? 0 : (o2.nodes > o1.nodes ? 1 : -1);
+    	}
+    }
+    
+    // recursive method
+    public static Record1 f1(DirectedGraphNode cur, HashMap<DirectedGraphNode, Record1> map) {
+    	if (map.containsKey(cur)) {
+    		return map.get(cur);
+    	}
+    	
+    	long nodes = 0;
+    	for (DirectedGraphNode next : cur.neighbors) {
+    		nodes += f1(next, map).nodes;
+    	}
+    	
+    	Record1 r = new Record1(cur, nodes + 1);
+    	map.put(cur, r);
+    	return r;
+    }
+    
+    // solution three DFS-2
+    public static ArrayList<DirectedGraphNode> topSort2(ArrayList<DirectedGraphNode> graph) {
+    	HashMap<DirectedGraphNode, Info2> map = new HashMap<>();
+    	for (DirectedGraphNode cur : graph) {
+    		f2(cur, map);
+    	}
+    	
+    	ArrayList<Info2> infoArr = new ArrayList<>();
+    	for (Info2 info : map.values()) {
+    		infoArr.add(info);
+    	}
+    	
+    	infoArr.sort(new MyComparator2());
+    	
+    	ArrayList<DirectedGraphNode> result = new ArrayList<>();
+    	for (Info2 info : infoArr) {
+    		result.add(info.node);
+    	}
+    	
+    	return result;
+    }
+
+    // auxiliary class
+    public static class Info2 {
+    	public DirectedGraphNode node;
+    	public int deep;
+    	
+    	public Info2(DirectedGraphNode n, int d) {
+    		node = n;
+    		deep = d;
+    	}
+    }
+    
+    // auxiliary comparator class
+    public static class MyComparator2 implements Comparator<Info2> {
+    	@Override
+    	public int compare(Info2 o1, Info2 o2) {
+    		return o2.deep - o1.deep;
+    	}
+    }
+    
+    // recursive method
+    public static Info2 f2(DirectedGraphNode node, HashMap<DirectedGraphNode, Info2> map) {
+    	if (map.containsKey(node)) {
+    		return map.get(node);
+    	}
+    	
+    	int deep = 0;
+    	for (DirectedGraphNode cur : node.neighbors) {
+    		deep = Math.max(deep, f2(cur, map).deep);
+    	}
+    	
+    	Info2 ans = new Info2(node, deep + 1);
+    	map.put(node, ans);
+    	return ans;
     }
 }
 
