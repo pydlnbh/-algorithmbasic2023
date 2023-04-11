@@ -1,6 +1,8 @@
 package src.class16;
 
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -77,6 +79,83 @@ public class Code04_TopologySort {
         return result;
     }
     
+    // solution two BFS-2 ACM-model
+    public static class TopologySortACM {
+    	public static int max = 200001;
+    	public static int[] nodes = new int[max];
+    	public static int[] queue = new int[max];
+    	public static int[] ans = new int[max];
+    	public static int n, m, from, to;
+    	
+    	public static void main(String[] args) throws Exception{
+    		StreamTokenizer st = new StreamTokenizer(new BufferedReader(new InputStreamReader(System.in)));
+    		PrintWriter pw = new PrintWriter(new OutputStreamWriter(System.out));
+    		
+    		while (st.nextToken() != StreamTokenizer.TT_EOF) {
+    			n = (int) st.nval;
+    			st.nextToken();
+    			m = (int) st.nval;
+    			
+    			ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
+    			for (int i = 0; i <= n; i++) {
+    				graph.add(new ArrayList<>());
+    			}
+    			
+    			for (int i = 0; i < m; i++) {
+    				st.nextToken();
+    				from = (int) st.nval;
+    				st.nextToken();
+    				to = (int) st.nval;
+    				
+    				graph.get(from).add(to);
+    			}
+    			
+    			if (!topologySort(graph)) {
+    				pw.println("-1");
+    			} else {
+    				for (int i = 0; i < n - 1; i++) {
+    					pw.print(ans[i] + " ");
+    				}
+    				pw.println(ans[n - 1]);
+    			}
+    			
+    			pw.flush();
+    		}
+    	}
+    	
+    	public static boolean topologySort(ArrayList<ArrayList<Integer>> graph) {
+    		Arrays.fill(nodes, 1, n + 1, 0);
+    		
+    		for (ArrayList<Integer> nexts : graph) {
+    			for (int next : nexts) {
+    				nodes[next]++;
+    			}
+    		}
+    		
+    		int index = 0;
+    		for (int i = 1; i <= n; i++) {
+    			if (nodes[i] == 0) {
+    				queue[index++] = i;
+    			}
+    		}
+    		
+    		int i = 0;
+    		int help = 0;
+    		while (i < index) {
+    			int cur = queue[i++];
+    			ans[help++] = cur;
+    			
+    			for (int next : graph.get(cur)) {
+    				if (--nodes[next] == 0) {
+    					queue[index++] = next;
+    				}
+    			}
+    		}
+    		
+    		return help == n;
+    	}
+    }
+     
     // solution three DFS-1
     public static ArrayList<DirectedGraphNode> topSort1(ArrayList<DirectedGraphNode> graph) {
     	HashMap<DirectedGraphNode, Record1> map = new HashMap<>();
