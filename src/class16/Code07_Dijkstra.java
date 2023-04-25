@@ -24,7 +24,7 @@ public class Code07_Dijkstra {
 					distanceMap.put(toNode, distance + edge.weight);
 				} else {
 					distanceMap.put(toNode, 
-						Math.min(distanceMap.get(minNode), distance + edge.weight));
+						Math.min(distanceMap.get(toNode), distance + edge.weight));
 				}
 			}
 			
