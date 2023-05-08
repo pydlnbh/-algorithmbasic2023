@@ -10,7 +10,7 @@ import src.Solution;
 public class Code01_SplictSumClosed {
 	// solution one
 	public static int right(int[] arr) {
-		if (arr == null || arr.length == 0) {
+		if (arr == null || arr.length < 2) {
 			return 0;
 		}
 		
@@ -40,7 +40,7 @@ public class Code01_SplictSumClosed {
 	
 	// solution two
 	public static int dp(int[] arr) {
-		if (arr == null || arr.length == 0) {
+		if (arr == null || arr.length < 2) {
 			return 0;
 		}
 		
