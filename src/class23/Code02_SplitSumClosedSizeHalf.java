@@ -34,7 +34,7 @@ public class Code02_SplitSumClosedSizeHalf {
 
 			int p2 = -1;
 			int next = -1;
-			if (arr[index] < rest) {
+			if (arr[index] <= rest) {
 				next = process(arr, index + 1, picks - 1, rest - arr[index]);
 			}
 			if (next != -1) {
@@ -80,7 +80,7 @@ public class Code02_SplitSumClosedSizeHalf {
 					
 					int p2 = -1;
 					int next = -1;
-					if (j - 1 >= 0 && arr[i] < k) {
+					if (j - 1 >= 0 && arr[i] <= k) {
 						next = dp[i + 1][j - 1][k - arr[i]];
 					}
 					

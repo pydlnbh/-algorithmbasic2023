@@ -30,7 +30,7 @@ public class Code01_SplictSumClosed {
 			int p1 = process(arr, index + 1, sum);
 			
 			int p2 = 0;
-			if (arr[index] < sum) {
+			if (arr[index] <= sum) {
 				p2 = arr[index] + process(arr, index + 1, sum - arr[index]);
 			}
 			
@@ -58,7 +58,7 @@ public class Code01_SplictSumClosed {
 				int p1 = dp[i + 1][rest];
 				
 				int p2 = 0;
-				if (arr[i] < rest) {
+				if (arr[i] <= rest) {
 					p2 = arr[i] + dp[i + 1][rest - arr[i]];
 				}
 				
