@@ -5,6 +5,19 @@ import java.util.Collections;
 import java.util.List;
 
 public class Solution {
+	// Talk is cheap.Show me your code
+	
+	
+	
+	// main
+	public static void main(String[] args) {
+		if (args.length < 1) {
+			System.out.println("please input args (type: int)");
+			return;
+		}
+		printRandomNumber(Integer.valueOf(args[0]));
+	}
+	
 	// print array
 	public static void printArray(int[] arr) {
 		for (int i = 0; i < arr.length; i++) {
@@ -117,16 +130,4 @@ public class Solution {
 		System.out.println((int) (Math.random() * maxValue) + 1);
 	}
 
-	// main
-	public static void main(String[] args) {
-		if (args.length < 1) {
-			System.out.println("please input args (type: int)");
-			return;
-		}
-		printRandomNumber(Integer.valueOf(args[0]));
-	}
-
-	// Talk is cheap.Show me your code
-	
-	
 }
