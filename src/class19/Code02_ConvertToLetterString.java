@@ -27,8 +27,8 @@ public class Code02_ConvertToLetterString {
 		
 		int ways = process(str, index + 1);
 		if (index + 1 < str.length()
-		&& (str.charAt(index + 1) - '0') * 10 + (str.charAt(index) - '0') < 27) {
-			ways += process(str, index  + 2);
+		&& ((str.charAt(index) - '0') * 10 + str.charAt(index + 1) - '0') < 27) {
+			ways += process(str, index + 2);
 		}
 		
 		return ways;
@@ -49,7 +49,7 @@ public class Code02_ConvertToLetterString {
 				int ways = dp[i + 1];
 				
 				if (i + 1 < n 
-				    && (str.charAt(i + 1) - '0') * 10 + (str.charAt(i) - '0') < 27) {
+				    && (str.charAt(i) - '0') * 10 + (str.charAt(i + 1) - '0') < 27) {
 					ways += dp[i + 2];
 				}
 				
@@ -69,8 +69,8 @@ public class Code02_ConvertToLetterString {
 		return String.valueOf(str);
 	}
 	
-	// main
-	public static void main(String[] args) {
+	// for test
+	public static void test() {
 		int len = 30;
 		int testTimes = 1000;
 		
@@ -92,5 +92,10 @@ public class Code02_ConvertToLetterString {
 		}
 		
 		System.out.println("end");
+	}
+	
+	// main
+	public static void main(String[] args) {
+		test();
 	}
 }
