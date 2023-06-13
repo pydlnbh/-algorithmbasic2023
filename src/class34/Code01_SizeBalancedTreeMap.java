@@ -306,7 +306,7 @@ public class Code01_SizeBalancedTreeMap {
 			return lastNoBigNode == null ? null : lastNoBigNode.k;
 		}
 		
-		public K ceillingKey(K key) {
+		public K ceilingKey(K key) {
 			if (key == null) {
 				return null;
 			}

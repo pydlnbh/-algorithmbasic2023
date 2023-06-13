@@ -284,7 +284,7 @@ public class Code01_AVLTreeMap {
 			return lastNoBigNode == null ? null : lastNoBigNode.k;
 		}
 		
-		public K ceillingKey(K key) {
+		public K ceilingKey(K key) {
 			if (key == null) {
 				return null;
 			}
@@ -341,7 +341,7 @@ public class Code01_AVLTreeMap {
 				}
 
 				key1 = treeMap.ceilingKey(queryK);
-				key2 = avl.ceillingKey(queryK);
+				key2 = avl.ceilingKey(queryK);
 				
 				if ((key1 == null && key2 != null)
 					|| (key1 != null && key2 == null)
