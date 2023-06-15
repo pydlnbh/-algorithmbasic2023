@@ -2,8 +2,6 @@ package src.class34;
 
 import java.util.ArrayList;
 
-import src.Solution;
-
 /**
  * skiplist 跳表的实现
  */
@@ -226,14 +224,14 @@ public class Code02_SkipListMap {
 	}
 
 	public static void main(String[] args) {
-		Solution.SkipListMap<String, String> test = new Solution.SkipListMap<>();
-		Solution.printAll(test);
+		SkipListMap<String, String> test = new SkipListMap<>();
+		printAll(test);
 		System.out.println("======================");
 		test.put("A", "10");
-		Solution.printAll(test);
+		printAll(test);
 		System.out.println("======================");
 		test.remove("A");
-		Solution.printAll(test);
+		printAll(test);
 		System.out.println("======================");
 		test.put("E", "E");
 		test.put("B", "B");
@@ -241,7 +239,7 @@ public class Code02_SkipListMap {
 		test.put("F", "F");
 		test.put("C", "C");
 		test.put("D", "D");
-		Solution.printAll(test);
+		printAll(test);
 		System.out.println("======================");
 		System.out.println(test.containsKey("B"));
 		System.out.println(test.containsKey("Z"));
@@ -251,7 +249,7 @@ public class Code02_SkipListMap {
 		System.out.println(test.ceilingKey("D"));
 		System.out.println("======================");
 		test.remove("D");
-		Solution.printAll(test);
+		printAll(test);
 		System.out.println("======================");
 		System.out.println(test.floorKey("D"));
 		System.out.println(test.ceilingKey("D"));
