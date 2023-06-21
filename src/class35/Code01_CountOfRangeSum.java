@@ -118,7 +118,7 @@ public class Code01_CountOfRangeSum {
 			
 			if (leftLeftSize > rightSize) {
 				cur = rightRotate(cur);
-				cur.l = maintain(cur.l);
+				cur.r = maintain(cur.r);
 				cur = maintain(cur);
 			} else if (leftRightSize > rightSize) {
 				cur.l = leftRotate(cur.l);
@@ -128,7 +128,7 @@ public class Code01_CountOfRangeSum {
 				cur = maintain(cur);
 			} else if (rightRightSize > leftSize) {
 				cur = leftRotate(cur);
-				cur.r = maintain(cur.r);
+				cur.l = maintain(cur.l);
 				cur = maintain(cur);
 			} else if (rightLeftSize > leftSize) {
 				cur.r = rightRotate(cur.r);
