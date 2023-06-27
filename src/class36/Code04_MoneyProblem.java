@@ -77,6 +77,9 @@ public class Code04_MoneyProblem {
 		return allMoney;
 	}
 	
+	// 从0....index号怪兽，花的钱，必须严格==money
+    // 如果通过不了，返回-1
+    // 如果可以通过，返回能通过情况下的最大能力值
 	public static long process2(int[] d, int[] p, int index, int money) {
 		if (index == -1) {
 			return money == 0 ? 0 : -1;
@@ -105,6 +108,9 @@ public class Code04_MoneyProblem {
 			sum += num;
 		}
 		
+		// dp[i][j]含义：
+		// 能经过0～i的怪兽，且花钱为j（花钱的严格等于j）时的武力值最大是多少？
+		// 如果dp[i][j]==-1，表示经过0～i的怪兽，花钱为j是无法通过的，或者之前的钱怎么组合也得不到正好为j的钱数
 		int[][] dp = new int[d.length][sum + 1];
 		for (int i = 0; i < d.length; i++) {
 			for (int j = 0; j <= sum; j++) {
@@ -112,20 +118,31 @@ public class Code04_MoneyProblem {
 			}
 		}
 		
+		// 经过0～i的怪兽，花钱数一定为p[0]，达到武力值d[0]的地步。其他第0行的状态一律是无效的
 		dp[0][p[0]] = d[0];
 		for (int i = 1; i < d.length; i++) {
 			for (int j = 0; j <= sum; j++) {
+				// 可能性一，为当前怪兽花钱
+				// 存在条件：
+				// j - p[i]要不越界，并且在钱数为j - p[i]时，要能通过0～i-1的怪兽，并且钱数组合是有效的。
 				if (j >= p[i] && dp[i - 1][j - p[i]] != -1) {
 					dp[i][j] = dp[i - 1][j - p[i]] + d[i];
 				}
 				
+				// 可能性二，不为当前怪兽花钱
+				// 存在条件：
+				// 0~i-1怪兽在花钱为j的情况下，能保证通过当前i位置的怪兽
 				if (dp[i - 1][j] >= d[i]) {
+					// 两种可能性中，选武力值最大的
 					dp[i][j] = Math.max(dp[i][j], dp[i - 1][j]);
 				}
 			}
 		}
 		
 		int ans = 0;
+		// dp表最后一行上，dp[N-1][j]代表：
+		// 能经过0～N-1的怪兽，且花钱为j（花钱的严格等于j）时的武力值最大是多少？
+		// 那么最后一行上，最左侧的不为-1的列数(j)，就是答案
 		for (int j = 0; j <= sum; j++) {
 			if (dp[d.length - 1][j] != -1) {
 				ans = j;
