@@ -1,7 +1,7 @@
 package src.class33;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+//import java.security.MessageDigest;
+//import java.security.NoSuchAlgorithmException;
 import java.security.Security;
 
 // https://www.mashibing.com/study?courseNo=339&sectionNo=286&courseVersionId=1255
@@ -10,20 +10,19 @@ import java.security.Security;
 
 public class Hash {
 
-	private MessageDigest hash;
+//	private MessageDigest hash;
 
-	public Hash(String algorithm) {
-		try {
-			hash = MessageDigest.getInstance(algorithm);
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		}
-	}
+//	public Hash(String algorithm) {
+//		try {
+//			hash = MessageDigest.getInstance(algorithm);
+//		} catch (NoSuchAlgorithmException e) {
+//			e.printStackTrace();
+//		}
+//	}
 
-	public String hashCode(String input) {
+//	public String hashCode(String input) {
 //		return DatatypeConverter.printHexBinary(hash.digest(input.getBytes())).toUpperCase();
-		return "";
-	}
+//	}
 
 	public static void main(String[] args) {
 		System.out.println("支持的算法 : ");
@@ -32,19 +31,19 @@ public class Hash {
 		}
 		System.out.println("=======");
 
-		String algorithm = "MD5";
-		Hash hash = new Hash(algorithm);
+//		String algorithm = "MD5";
+//		Hash hash = new Hash(algorithm);
 
-		String input1 = "zuochengyunzuochengyun1";
-		String input2 = "zuochengyunzuochengyun2";
-		String input3 = "zuochengyunzuochengyun3";
-		String input4 = "zuochengyunzuochengyun4";
-		String input5 = "zuochengyunzuochengyun5";
-		System.out.println(hash.hashCode(input1));
-		System.out.println(hash.hashCode(input2));
-		System.out.println(hash.hashCode(input3));
-		System.out.println(hash.hashCode(input4));
-		System.out.println(hash.hashCode(input5));
+//		String input1 = "peiyiding1";
+//		String input2 = "peiyiding12";
+//		String input3 = "peiyiding13";
+//		String input4 = "peiyiding14";
+//		String input5 = "peiyiding15";
+//		System.out.println(hash.hashCode(input1));
+//		System.out.println(hash.hashCode(input2));
+//		System.out.println(hash.hashCode(input3));
+//		System.out.println(hash.hashCode(input4));
+//		System.out.println(hash.hashCode(input5));
 
 	}
 
