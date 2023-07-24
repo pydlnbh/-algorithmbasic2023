@@ -1,4 +1,4 @@
-package src.class38;
+package src.class40;
 
 // 给定一个正方形或者长方形矩阵matrix，实现zigzag打印
 public class Code08_ZigZagPrintMatrix {

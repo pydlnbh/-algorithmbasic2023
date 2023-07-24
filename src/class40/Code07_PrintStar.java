@@ -1,4 +1,4 @@
-package src.class38;
+package src.class40;
 
 // 转圈打印星号*问题
 public class Code07_PrintStar {

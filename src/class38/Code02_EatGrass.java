@@ -1,4 +1,4 @@
-package src.class36;
+package src.class38;
 
 /**
  * 给定一个正整数N，表示有N份青草统一堆放在仓库里，有一只牛和一只羊，牛先吃，羊后吃，它俩轮流吃草

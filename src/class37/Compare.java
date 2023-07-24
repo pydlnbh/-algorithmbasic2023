@@ -1,10 +1,10 @@
-package src.class35;
+package src.class37;
 
 import java.util.TreeMap;
 
-import src.class33.Code01_AVLTreeMap.AVLTreeMap;
-import src.class34.Code01_SizeBalancedTreeMap.SizeBalancedTreeMap;
-import src.class34.Code02_SkipListMap.SkipListMap;
+import src.class35.Code01_AVLTreeMap.AVLTreeMap;
+import src.class36.Code01_SizeBalancedTreeMap.SizeBalancedTreeMap;
+import src.class36.Code02_SkipListMap.SkipListMap;
 
 public class Compare {
 

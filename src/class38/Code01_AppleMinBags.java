@@ -1,4 +1,4 @@
-package src.class36;
+package src.class38;
 
 /**
  * 小虎去买苹果，商店只提供两种类型的塑料袋，每种类型都有任意数量

@@ -1,4 +1,4 @@
-package src.class38;
+package src.class40;
 
 // 给定一个正方形矩阵matrix，原地调整成顺时针90度转动的样子
 public class Code05_RotateMatrix {

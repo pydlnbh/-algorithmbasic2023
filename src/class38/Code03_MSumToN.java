@@ -1,4 +1,4 @@
-package src.class36;
+package src.class38;
 
 /**
  * 定义一种数：可以表示成若干（数量>1）连续正数和的数

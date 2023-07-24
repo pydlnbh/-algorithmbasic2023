@@ -1,4 +1,4 @@
-package src.class36;
+package src.class38;
 
 /**
  * int[] d，d[i]：i号怪兽的能力
