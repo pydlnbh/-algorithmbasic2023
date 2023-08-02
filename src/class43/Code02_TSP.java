@@ -171,18 +171,22 @@ public class Code02_TSP {
 		return hasCity ? ans : matrix[cur][aim];
 	}
 	
-	public static int[][] generateGraph(int maxSize, int maxValue) {
-		int len = (int) (Math.random() * maxSize) + 1;
-		int[][] matrix = new int[len][len];
-		for (int i = 0; i < len; i++) {
-			for (int j = 0; j < len; j++) {
-				matrix[i][j] = (int) (Math.random() * maxValue) + 1;
+	public static int process2(int[][] matrix, int aim, ArrayList<Integer> cities, int cur) {
+		if (cities.size() == 1) {
+			return matrix[cur][aim];
+		}
+		
+		cities.set(cur, null);
+		int ans = Integer.MAX_VALUE;
+		for (int i = 0; i < cities.size(); i++) {
+			if (cities.get(i) != null) {
+				int dis = matrix[cur][i] + process2(matrix, aim, cities, i);
+				ans = Math.min(ans, dis);
 			}
 		}
-		for (int i = 0; i < len; i++) {
-			matrix[i][i] = 0;
-		}
-		return matrix;
+		
+		cities.set(cur, 1);
+		return ans;
 	}
 	
 	public static int tsp2(int[][] matrix, int origin) {
@@ -226,6 +230,20 @@ public class Code02_TSP {
 		}
 		
 		return ans;
+	}
+	
+	public static int[][] generateGraph(int maxSize, int maxValue) {
+		int len = (int) (Math.random() * maxSize) + 1;
+		int[][] matrix = new int[len][len];
+		for (int i = 0; i < len; i++) {
+			for (int j = 0; j < len; j++) {
+				matrix[i][j] = (int) (Math.random() * maxValue) + 1;
+			}
+		}
+		for (int i = 0; i < len; i++) {
+			matrix[i][i] = 0;
+		}
+		return matrix;
 	}
 	
 	public static void main(String[] args) {
